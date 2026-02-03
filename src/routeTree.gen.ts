@@ -9,9 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ScrollRouteImport } from './routes/scroll'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiRemyChatRouteImport } from './routes/api.remy-chat'
 
+const ScrollRoute = ScrollRouteImport.update({
+  id: '/scroll',
+  path: '/scroll',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -25,32 +31,43 @@ const ApiRemyChatRoute = ApiRemyChatRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/scroll': typeof ScrollRoute
   '/api/remy-chat': typeof ApiRemyChatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/scroll': typeof ScrollRoute
   '/api/remy-chat': typeof ApiRemyChatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/scroll': typeof ScrollRoute
   '/api/remy-chat': typeof ApiRemyChatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api/remy-chat'
+  fullPaths: '/' | '/scroll' | '/api/remy-chat'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/remy-chat'
-  id: '__root__' | '/' | '/api/remy-chat'
+  to: '/' | '/scroll' | '/api/remy-chat'
+  id: '__root__' | '/' | '/scroll' | '/api/remy-chat'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ScrollRoute: typeof ScrollRoute
   ApiRemyChatRoute: typeof ApiRemyChatRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/scroll': {
+      id: '/scroll'
+      path: '/scroll'
+      fullPath: '/scroll'
+      preLoaderRoute: typeof ScrollRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ScrollRoute: ScrollRoute,
   ApiRemyChatRoute: ApiRemyChatRoute,
 }
 export const routeTree = rootRouteImport
