@@ -16,7 +16,7 @@ export default function Cta() {
           >
             Ready to
             <span
-              className={`block ${theme === 'dark' ? 'text-slate-500' : 'text-slate-400'}`}
+              className={`block text-purple-500`}
             >
               collaborate?
             </span>

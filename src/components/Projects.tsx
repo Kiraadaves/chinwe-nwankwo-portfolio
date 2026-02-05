@@ -1,6 +1,5 @@
-import { ExternalLink } from 'lucide-react'
+
 import { useTheme } from 'next-themes'
-import { useState } from 'react'
 
 interface Project {
   title: string
@@ -415,9 +414,7 @@ export default function Projects() {
   return (
     <section id="work" className="relative">
       <section id="sectionPin" className="">
-        <div
-          className={`pin-wrap-sticky ${theme === 'dark' ? 'bg-slate-950 text-white' : 'bg-white text-slate-950'}`}
-        >
+        <div className={`pin-wrap-sticky `}>
           <div className="pin-wrap">
             <div className="w-[40vw] shrink-0">
               <p
@@ -430,24 +427,23 @@ export default function Projects() {
               >
                 Projects that
                 <span
-                  className={`block ${theme === 'dark' ? 'text-slate-500' : 'text-slate-400'}`}
+                  className={`block ${theme === 'dark' ? 'text-slate-500' : 'text-purple-500'}`}
                 >
                   moved the needle
                 </span>
               </h2>
             </div>
             <div
-              className="card border-4 border-slate-200"
+              className="card "
               style={{
-                backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 100%), url('/images/one.png')`,
+                backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.8) 100%), url('/images/shaks.png')`,
                 backgroundColor: 'lightgray',
               }}
             >
-              <div className="card-content">
+              <div className="card-content ">
                 <h2>Design</h2>
                 <p>Creating beautiful, intentional interfaces...</p>
               </div>
-              <div className="card-number">01</div>
             </div>
             <div
               className="card"
@@ -462,10 +458,15 @@ export default function Projects() {
                   Smooth animations that guide attention and delight the user
                 </p>
               </div>
-              <div className="card-number">02</div>
             </div>
 
-            <div className="card card-3">
+            <div
+              className="card "
+              style={{
+                backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 100%), url('/images/wah.png')`,
+                backgroundColor: 'lightgray',
+              }}
+            >
               <div className="card-content">
                 <h2>Interaction</h2>
                 <p>
@@ -475,17 +476,10 @@ export default function Projects() {
               <div className="card-number">03</div>
             </div>
 
-            <div className="card card-4">
-              <div className="card-content">
-                <h2>Performance</h2>
-                <p>
-                  Optimized for speed without compromising on visual quality
-                </p>
-              </div>
-              <div className="card-number">04</div>
-            </div>
-            <div>
-              <button>View All</button>
+            <div className="">
+              <button className="py-3 px-6 text-white bg-purple-500 rounded-full">
+                View All
+              </button>
             </div>
           </div>
         </div>

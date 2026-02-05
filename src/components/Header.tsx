@@ -39,7 +39,7 @@ export default function Header() {
   return (
     <>
       <header
-        className={`z-20 border-b sticky top-0 flex justify-between items-center px-2 py-6 ${theme === 'dark' ? 'border-slate-800 bg-slate-950/80' : 'border-slate-200 bg-white/80'} backdrop-blur-md`}
+        className={`z-20 border-b sticky top-0 flex justify-between items-center px-2 py-6 ${theme === 'dark' ? 'border-slate-800 ' : 'border-slate-200 bg-white/80'} backdrop-blur-md`}
       >
         <button
           onClick={() => setIsOpen(true)}
