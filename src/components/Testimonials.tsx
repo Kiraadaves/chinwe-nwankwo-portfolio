@@ -106,7 +106,7 @@ export default function Testimonials() {
         >
           What clients
           <span
-            className={`block ${theme === 'dark' ? 'text-slate-500' : 'text-purple-500'}`}
+            className={`block ${theme === 'dark' ? 'text-purple-500' : 'text-purple-500'}`}
           >
             are saying
           </span>
@@ -118,29 +118,32 @@ export default function Testimonials() {
         opts={{ align: 'start', loop: false }}
         className="lg:space-y-5 lg:pl-3.75 lg:w-[65%] "
       >
-        {/* 1. Use -ml-10 to create a large gap; use pr-10 to ensure the last card has room */}
         <CarouselContent className="-ml-10 pr-10">
           {testimonials.map((testimonial, index) => (
             <CarouselItem
               key={index}
-              /* 2. basis-[85%] makes the card take most of the width, leaving a "peek" */
-              /* 3. pl-10 creates the visible space between cards */
               className="pl-10 basis-[85%] md:basis-[70%] lg:basis-[80%]"
             >
-              {/* 4. Keep your inner div for the borders/background */}
               <div
-                className={`h-full border rounded-lg p-8 transition-all hover:scale-105 ${
+                className={`h-full flex flex-col justify-between border rounded-lg p-8  transition-all hover:scale-105 ${
                   theme === 'dark'
                     ? 'border-slate-800 hover:border-cyan-400/50 bg-slate-900/40'
                     : 'border-slate-200 hover:border-cyan-600/50 bg-slate-50/40'
                 }`}
               >
-                <div className="flex items-center gap-4 mb-6">
+                <div className="flex justify-center">
                   <img
                     src={testimonial.image}
                     alt="avatars"
-                    className="w-20 h-20 rounded-full"
+                    className="w-20 lg:w-40 h-20 lg:h-40 rounded-full"
                   />
+                </div>
+                <p
+                  className={`leading-relaxed ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}
+                >
+                  {testimonial.content}
+                </p>
+                <div className="flex flex-col gap-4 lg:flex-row lg:justify-between">
                   <div>
                     <h3
                       className={`font-black text-lg ${theme === 'dark' ? '' : 'text-slate-950'}`}
@@ -153,23 +156,21 @@ export default function Testimonials() {
                       {testimonial.role}
                     </p>
                   </div>
-                </div>
-                <p
-                  className={`leading-relaxed ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}
-                >
-                  {testimonial.content}
-                </p>
-                <div className="flex gap-1 mt-6">
-                  {[...Array(5)].map((_, i) => (
-                    <span
-                      key={i}
-                      className={
-                        theme === 'dark' ? 'text-yellow-400' : 'text-yellow-600'
-                      }
-                    >
-                      ★
-                    </span>
-                  ))}
+
+                  <div className="flex gap-1 mt-6">
+                    {[...Array(5)].map((_, i) => (
+                      <span
+                        key={i}
+                        className={
+                          theme === 'dark'
+                            ? 'text-yellow-400'
+                            : 'text-yellow-600'
+                        }
+                      >
+                        ★
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </CarouselItem>
@@ -180,14 +181,29 @@ export default function Testimonials() {
           <div className="w-full  flex justify-center lg:justify-between lg:items-center space-x-15">
             <div className="hidden lg:flex items-center gap-[18.75px]">
               <CarouselPrevious
-                className={`cursor-pointer h-7.5 w-7.5 static translate-y-0 transition-opacity duration-200 ${
-                  isFirstSlide ? 'bg-transparent ' : 'bg-white text-[#0e396c]'
-                }`}
+                className={`cursor-pointer h-7.5 w-7.5 static translate-y-0 transition-all duration-200 border-none
+    ${
+      isFirstSlide
+        ? theme === 'dark'
+          ? 'bg-slate-800! text-slate-500!'
+          : 'bg-slate-200! text-slate-400!'
+        : theme === 'dark'
+          ? 'bg-purple-400! text-black!'
+          : 'bg-purple-600! text-white!'
+    }`}
               />
+
               <CarouselNext
-                className={`cursor-pointer h-7.5 w-7.5 static translate-y-0 transition-opacity duration-200 ${
-                  isLastSlide ? 'bg-transparent ' : 'bg-white text-[#0e396c]'
-                }`}
+                className={`cursor-pointer h-7.5 w-7.5 static translate-y-0 transition-all duration-200 border-none
+    ${
+      isLastSlide
+        ? theme === 'dark'
+          ? 'bg-slate-800! text-slate-500!'
+          : 'bg-slate-200! text-slate-400!'
+        : theme === 'dark'
+          ? 'bg-purple-400! text-black!'
+          : 'bg-purple-600! text-white!'
+    }`}
               />
             </div>
 
@@ -197,8 +213,8 @@ export default function Testimonials() {
                   key={index}
                   className={`h-1   rounded-full transition-colors duration-200 ${
                     current === index
-                      ? 'w-10 bg-[#FFFFFF]'
-                      : 'w-3.75 bg-[#FFFFFF1a]'
+                      ? 'w-10 bg-purple-600'
+                      : 'w-3.75 bg-purple-300/40'
                   }`}
                 />
               ))}

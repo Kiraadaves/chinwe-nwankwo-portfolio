@@ -7,7 +7,7 @@ export default function Cta() {
   return (
     <section
       id="contact"
-      className={`relative z-10 max-w-7xl mx-auto px-6 py-32 border-t ${theme === 'dark' ? 'border-slate-800' : 'border-slate-200'}`}
+      className={`relative z-10 px-5 lg:px-15 py-32 border-t ${theme === 'dark' ? 'border-slate-800' : 'border-slate-200'}`}
     >
       <div className="grid grid-cols-2 gap-12 items-center">
         <div>

@@ -11,7 +11,7 @@ export default function Footer() {
         <p
           className={`font-mono text-sm ${theme === 'dark' ? 'text-slate-500' : 'text-slate-500'}`}
         >
-          Crafted with code & coffee. © 2024
+          Chinwe Nwankwo & coffee. © 2026
         </p>
       </div>
     </footer>

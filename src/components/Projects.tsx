@@ -416,7 +416,7 @@ export default function Projects() {
       <section id="sectionPin" className="">
         <div className={`pin-wrap-sticky `}>
           <div className="pin-wrap">
-            <div className="w-[40vw] shrink-0">
+            <div className="w-[40vw] shrink-0 ">
               <p
                 className={`font-mono text-sm mb-4 ${theme === 'dark' ? 'text-cyan-400' : 'text-cyan-600'}`}
               >
@@ -432,6 +432,7 @@ export default function Projects() {
                   moved the needle
                 </span>
               </h2>
+              <div className='h-100 border border-slate-100'></div>
             </div>
             <div
               className="card "
