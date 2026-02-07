@@ -1,5 +1,58 @@
 import { useTheme } from 'next-themes'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+
+const TypewriterChangeText = (theme: string | undefined) => {
+  const changingText = [
+    'High Performance Architecture.',
+    'User-Centric Design.',
+    'Scalable Architecture.',
+    'Accessibility First.',
+    'Type Safety.',
+    `Let's build something together!`,
+  ]
+
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [displayedText, setDisplayedText] = useState('')
+  const [isDeleting, setIsDeleting] = useState(false)
+
+  useEffect(() => {
+    const currentText = changingText[currentIndex]
+    const timer = setTimeout(
+      () => {
+        if (!isDeleting) {
+          // Typing
+          if (displayedText.length < currentText.length) {
+            setDisplayedText(currentText.slice(0, displayedText.length + 1))
+          } else {
+            // Finished typing, wait then start deleting
+            setTimeout(() => setIsDeleting(true), 2000)
+          }
+        } else {
+          // Deleting
+          if (displayedText.length > 0) {
+            setDisplayedText(displayedText.slice(0, -1))
+          } else {
+            // Finished deleting, move to next text
+            setCurrentIndex((prev) => (prev + 1) % changingText.length)
+            setIsDeleting(false)
+          }
+        }
+      },
+      isDeleting ? 50 : 100,
+    )
+
+    return () => clearTimeout(timer)
+  }, [displayedText, isDeleting, currentIndex])
+
+  return (
+    <p
+      className={` text-xl mb-2 ${theme === 'dark' ? ' text-cyan-400' : 'text-purple-600'}`}
+    >
+      <span>{displayedText}</span>
+      <span className="animate-pulse">|</span>
+    </p>
+  )
+}
 
 const Ball = ({ className }: { className: string }) => {
   const ballRef = useRef<HTMLDivElement>(null)
@@ -61,17 +114,17 @@ export default function Hero() {
   }
 
   return (
-    <section id="hero" className="relative z-10  px-5 lg:px-15 py-32">
-      <div className="grid grid-cols-12 gap-8 items-center">
-        <div className="col-span-7">
+    <section id="hero" className="relative z-10  px-5 lg:px-15 py-16 lg:py-32">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="col-span-1 lg:col-span-7">
           <div className="space-y-8 animate-in fade-in slide-in-from-left-12 duration-1000">
             <div>
               <p
-                className={`font-mono text-sm mb-4 animate-pulse ${theme === 'dark' ? 'text-cyan-400' : 'text-cyan-600'}`}
+                className={`font-mono text-sm lg:text-base mb-4 animate-pulse ${theme === 'dark' ? 'text-cyan-400' : 'text-cyan-600'}`}
               >
                 FRONTEND DEVELOPER
               </p>
-              <h1 className=" text-7xl font-black leading-tight tracking-tighter">
+              <h1 className="text-5xl lg:text-7xl font-black leading-tight tracking-tighter">
                 <span className="relative whitespace-nowrap ">
                   <svg
                     aria-hidden="true"
@@ -91,7 +144,7 @@ export default function Hero() {
               </h1>
             </div>
             <p
-              className={`text-lg max-w-xl leading-relaxed ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}
+              className={`text-base lg:text-lg max-w-xl leading-relaxed ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}
             >
               I craft high-performance web experiences that push boundaries.
               Specializing in interactive frontends, real-time systems, and
@@ -100,7 +153,7 @@ export default function Hero() {
             <div className="flex gap-4 pt-4">
               <button
                 onClick={() => scrollToSection('work')}
-                className={`px-8 py-4 font-bold rounded-lg transition-all hover:scale-105 active:scale-95 ${
+                className={`py-3 px-4 lg:px-8 lg:py-4 font-bold rounded-lg transition-all hover:scale-105 active:scale-95 ${
                   theme === 'dark'
                     ? 'bg-cyan-500 text-black hover:bg-cyan-400'
                     : 'bg-cyan-600 text-white hover:bg-cyan-500'
@@ -109,7 +162,7 @@ export default function Hero() {
                 See My Work →
               </button>
               <button
-                className={`px-8 py-4 border-2 font-bold rounded-lg transition-all ${
+                className={`py-3 px-4 lg:px-8 lg:py-4 border-2 font-bold rounded-lg transition-all ${
                   theme === 'dark'
                     ? 'border-slate-700 hover:border-cyan-400 hover:text-cyan-400'
                     : 'border-slate-300 hover:border-cyan-600 hover:text-cyan-600'
@@ -121,10 +174,10 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="col-span-5">
+        <div className="col-span-1 lg:col-span-5">
           <div className="relative">
             <div
-              className={`relative aspect-square rounded-2xl border p-8 backdrop-blur-sm animate-in fade-in slide-in-from-right-12 duration-1000 delay-200 ${
+              className={`relative aspect-square rounded-2xl border p-4 lg:p-8 backdrop-blur-sm animate-in fade-in slide-in-from-right-12 duration-1200 delay-300 ${
                 theme === 'dark'
                   ? 'bg-linear-to-br from-cyan-500/20 to-purple-500/20 border-slate-700'
                   : 'bg-linear-to-br from-cyan-300/20 to-purple-300/20 border-slate-300'
@@ -178,18 +231,108 @@ export default function Hero() {
                   theme === 'dark' ? 'bg-slate-500/30' : 'bg-[#A0DDE2]'
                 }`}
               />
+              {TypewriterChangeText(theme)}
+              <div className="relative z-10 space-y-2 text-xs font-mon py-2">
+                <div className="text-slate-500">
+                  {'[10:42:01] Starting build...'}
+                </div>
+                <div className="text-green-500">{'✔ Compiling TypeScript'}</div>
+                <div className="text-green-500">{'✔ Optimizing Assets'}</div>
+                <div className="flex gap-2 text-slate-400">
+                  <span>{'[DONE]'}</span>
+                  <span className="text-cyan-500">{'Ready in 420ms'}</span>
+                </div>
+                <div className="mt-2 p-2 bg-slate-800/30 rounded text-slate-300">
+                  <div className="flex justify-between">
+                    <span>main.js</span>
+                    <span className="text-green-400">142kB</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>vendor.js</span>
+                    <span className="text-amber-400">890kB</span>
+                  </div>
+                </div>
+              </div>
               <div
                 className={`relative z-10 space-y-4 text-sm font-mono ${theme === 'dark' ? 'text-cyan-400' : 'text-cyan-600'}`}
               >
-                <div>{'<Portfolio />'}</div>
+                <div className="flex items-center gap-2">
+                  <span>{'<Portfolio />'}</span>
+                  <span
+                    className="h-2 w-2 rounded-full bg-green-500 animate-pulse"
+                    title="Available for hire"
+                  ></span>
+                </div>
+
                 <div
                   className={`ml-4 ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`}
                 >
-                  <div>{'skills: ["React", "Vue", "TypeScript"]'}</div>
-                  <div>{'experience: 5+ years'}</div>
-                  <div>{'impact: 10M+ users shipped'}</div>
+                  <div>
+                    {'skills: ['}
+                    <span className="text-orange-400">"React"</span>,
+                    <span className="text-green-400">"Nuxt"</span>,
+                    <span className="text-blue-400">"TypeScript"</span>......
+                    {']'}
+                  </div>
+                  <div>
+                    {'experience: '}
+                    <span className="text-amber-500">"3+ years"</span>
+                  </div>
+                  <div>
+                    {'location: '}
+                    <span className="text-amber-500">"Remote / Lagos"</span>
+                  </div>
                 </div>
+
                 <div>{'</Portfolio>'}</div>
+              </div>
+
+              <div
+                className={`relative z-10 space-y-4 text-sm font-mono ${theme === 'dark' ? 'text-purple-400' : 'text-purple-600'}`}
+              >
+                <div>{'<Connect />'}</div>
+                <div
+                  className={`ml-4 ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`}
+                >
+                  <div>
+                    {'github: '}
+                    <a
+                      href="https://github.com/Kiraadaves "
+                      className="text-orange-400 cursor-pointer hover:underline"
+                    >
+                      "@Kiraadaves"
+                    </a>
+                  </div>
+                  <div>
+                    {'linkedin: '}
+                    <a
+                      href="https://www.linkedin.com/in/chinwe-chukwuogor-400404118/"
+                      className="text-blue-400 cursor-pointer hover:underline"
+                    >
+                      "Chinwe Nwankwo"
+                    </a>
+                  </div>
+                  <div>
+                    {'twitter: '}
+                    <a
+                      href="https://x.com/CKiraadaves"
+                      className="text-blue-400 cursor-pointer hover:underline"
+                    >
+                      "@CKiraadaves"
+                    </a>
+                  </div>
+                  <div>
+                    {'email: '}
+                    <span className="text-amber-500">
+                      "chukwuogorchinwe@gmail.com"
+                    </span>
+                  </div>
+                  <div className="">
+                    {'available_for_hire: '}
+                    <span className="text-green-500">true</span>
+                  </div>
+                </div>
+                <div>{'</Connect>'}</div>
               </div>
             </div>
           </div>

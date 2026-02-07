@@ -182,7 +182,7 @@ button {
 /* Card styling */
 .card {
   flex-shrink: 0;
-  width: 50vw;
+  width: 60vw;
   height: 80vh;
   border: solid 2px rgba(128, 128, 128, 0.788) ;
   border-radius: 16px;

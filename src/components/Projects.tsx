@@ -1,4 +1,3 @@
-
 import { useTheme } from 'next-themes'
 
 interface Project {
@@ -432,12 +431,11 @@ export default function Projects() {
                   moved the needle
                 </span>
               </h2>
-              <div className='h-100 border border-slate-100'></div>
             </div>
             <div
               className="card "
               style={{
-                backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.8) 100%), url('/images/shaks.png')`,
+                backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.8) 100%), url('/images/tone.png')`,
                 backgroundColor: 'lightgray',
               }}
             >
@@ -464,7 +462,7 @@ export default function Projects() {
             <div
               className="card "
               style={{
-                backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 100%), url('/images/wah.png')`,
+                backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 100%), url('/images/ttwo.png')`,
                 backgroundColor: 'lightgray',
               }}
             >
@@ -474,7 +472,6 @@ export default function Projects() {
                   Responsive, intuitive experiences that respond to user intent
                 </p>
               </div>
-              <div className="card-number">03</div>
             </div>
 
             <div className="">
