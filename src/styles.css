@@ -184,7 +184,7 @@ button {
   flex-shrink: 0;
   width: 60vw;
   height: 80vh;
-  border: solid 2px rgba(128, 128, 128, 0.788) ;
+  border: solid 2px rgba(128, 128, 128, 0.788);
   border-radius: 16px;
   display: flex;
   flex-direction: column;

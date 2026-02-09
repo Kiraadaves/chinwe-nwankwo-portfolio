@@ -412,17 +412,63 @@ export default function Projects() {
   const { theme } = useTheme()
   return (
     <section id="work" className="relative">
-      <section id="sectionPin" className="">
+      <section className="block md:hidden space-y-5 px-5 py-16">
+        <div className="w-full mb-8 lg:hidden">
+          <p
+            className={`font-mono text-sm mb-2 ${theme === 'dark' ? 'text-cyan-400' : 'text-cyan-600'}`}
+          >
+            FEATURED WORK
+          </p>
+
+          <h2
+            className={`text-4xl font-black tracking-tighter leading-[1.1] ${theme === 'dark' ? 'text-white' : 'text-slate-950'}`}
+          >
+            Projects that{' '}
+            <span
+              className={`block ${theme === 'dark' ? 'text-slate-500' : 'text-purple-500'}`}
+            >
+              moved the needle
+            </span>
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 gap-4">
+          <div className="relative overflow-hidden h-80 border border-slate-400 rounded-[10px]">
+            <img
+              src="/images/wil.jpg"
+              className="rounded-[10px] object-cover h-full w-full"
+            />
+          </div>
+          <div className="relative overflow-hidden h-80 border border-slate-400 rounded-[10px]">
+            <img
+              src="/images/qart.png"
+              className="rounded-[10px] object-cover h-full w-full"
+            />
+          </div>{' '}
+          <div className="relative overflow-hidden h-80 border border-slate-400 rounded-[10px]">
+            <img
+              src="/images/mainshak.jpg"
+              className="rounded-[10px] object-cover h-full w-full"
+            />
+          </div>
+          <div className="flex justify-center">
+            <button className="py-3 px-6 text-white bg-purple-500 rounded-full">
+              View All
+            </button>
+          </div>
+        </div>
+      </section>
+      <section id="sectionPin" className="hidden md:block">
         <div className={`pin-wrap-sticky `}>
           <div className="pin-wrap">
             <div className="w-[40vw] shrink-0 ">
               <p
-                className={`font-mono text-sm mb-4 ${theme === 'dark' ? 'text-cyan-400' : 'text-cyan-600'}`}
+                className={`font-mono text-sm lg:text-base mb-4 ${theme === 'dark' ? 'text-cyan-400' : 'text-cyan-600'}`}
               >
                 FEATURED WORK
               </p>
               <h2
-                className={`text-5xl font-black tracking-tighter ${theme === 'dark' ? '' : 'text-slate-950'}`}
+                className={`text-5xl  font-black tracking-tighter ${theme === 'dark' ? '' : 'text-slate-950'}`}
               >
                 Projects that
                 <span
@@ -435,44 +481,25 @@ export default function Projects() {
             <div
               className="card "
               style={{
-                backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.8) 100%), url('/images/tone.png')`,
+                backgroundImage: `url('/images/wil.jpg')`,
                 backgroundColor: 'lightgray',
               }}
-            >
-              <div className="card-content ">
-                <h2>Design</h2>
-                <p>Creating beautiful, intentional interfaces...</p>
-              </div>
-            </div>
+            ></div>
             <div
               className="card"
               style={{
-                backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 100%), url('/images/qart.png')`,
+                backgroundImage: `url('/images/qart.png')`,
                 backgroundColor: 'lightgray',
               }}
-            >
-              <div className="card-content">
-                <h2>Motion</h2>
-                <p>
-                  Smooth animations that guide attention and delight the user
-                </p>
-              </div>
-            </div>
+            ></div>
 
             <div
               className="card "
               style={{
-                backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 100%), url('/images/ttwo.png')`,
+                backgroundImage: `url('/images/mainshak.jpg')`,
                 backgroundColor: 'lightgray',
               }}
-            >
-              <div className="card-content">
-                <h2>Interaction</h2>
-                <p>
-                  Responsive, intuitive experiences that respond to user intent
-                </p>
-              </div>
-            </div>
+            ></div>
 
             <div className="">
               <button className="py-3 px-6 text-white bg-purple-500 rounded-full">

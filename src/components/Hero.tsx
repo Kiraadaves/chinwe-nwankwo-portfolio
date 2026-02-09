@@ -46,7 +46,7 @@ const TypewriterChangeText = (theme: string | undefined) => {
 
   return (
     <p
-      className={` text-xl mb-2 ${theme === 'dark' ? ' text-cyan-400' : 'text-purple-600'}`}
+      className={`z-20 text-xl mb-2 ${theme === 'dark' ? ' text-cyan-400' : 'text-purple-600'}`}
     >
       <span>{displayedText}</span>
       <span className="animate-pulse">|</span>
@@ -184,155 +184,163 @@ export default function Hero() {
               }`}
             >
               <div
-                className={`absolute inset-0 rounded-2xl opacity-50 ${theme === 'dark' ? 'bg-linear-to-t from-slate-950 to-transparent' : 'bg-linear-to-t from-white to-transparent'}`}
+                className={`absolute inset-0 rounded-2xl opacity-50 z-0 ${theme === 'dark' ? 'bg-linear-to-t from-slate-950 to-transparent' : 'bg-linear-to-t from-white to-transparent'}`}
               />
-              <Ball
-                className={`z-10 w-2.5 h-2.5 rounded-full opacity-30 md:opacity-100 ${
-                  theme === 'dark' ? 'bg-slate-500/30' : 'bg-[#40BBC3]'
-                }`}
-              />
-              <Ball
-                className={`z-10 w-8 h-8 rounded-full opacity-30 md:opacity-100 ${
-                  theme === 'dark' ? 'bg-slate-500/30' : 'bg-[#A0DDE2]'
-                }`}
-              />
-              <Ball
-                className={`z-10 w-14 h-14 rounded-full opacity-30 md:opacity-100 ${
-                  theme === 'dark' ? 'bg-slate-500/30' : 'bg-[#A0DDE2]'
-                }`}
-              />
-              <Ball
-                className={`z-10 w-14 h-14 rounded-full opacity-30 md:opacity-100 ${
-                  theme === 'dark' ? 'bg-slate-500/30' : 'bg-[#A0DDE2]'
-                }`}
-              />
-              <Ball
-                className={`z-10 w-8 h-8 rounded-full opacity-30 md:opacity-100 ${
-                  theme === 'dark' ? 'bg-slate-500/30' : 'bg-[#A0DDE2]'
-                }`}
-              />
-              <Ball
-                className={`z-10 w-14 h-14 rounded-full opacity-30 md:opacity-100 ${
-                  theme === 'dark' ? 'bg-slate-500/30' : 'bg-[#A0DDE2]'
-                }`}
-              />
-              <Ball
-                className={`z-10 w-8 h-8 rounded-full opacity-30 md:opacity-100 ${
-                  theme === 'dark' ? 'bg-slate-500/30' : 'bg-[#A0DDE2]'
-                }`}
-              />
-              <Ball
-                className={`z-10 w-14 h-14 rounded-full opacity-30 md:opacity-100 ${
-                  theme === 'dark' ? 'bg-slate-500/30' : 'bg-[#A0DDE2]'
-                }`}
-              />
-              <Ball
-                className={`z-10 w-14 h-14 rounded-full opacity-30 md:opacity-100 ${
-                  theme === 'dark' ? 'bg-slate-500/30' : 'bg-[#A0DDE2]'
-                }`}
-              />
-              {TypewriterChangeText(theme)}
-              <div className="relative z-10 space-y-2 text-xs font-mon py-2">
-                <div className="text-slate-500">
-                  {'[10:42:01] Starting build...'}
-                </div>
-                <div className="text-green-500">{'✔ Compiling TypeScript'}</div>
-                <div className="text-green-500">{'✔ Optimizing Assets'}</div>
-                <div className="flex gap-2 text-slate-400">
-                  <span>{'[DONE]'}</span>
-                  <span className="text-cyan-500">{'Ready in 420ms'}</span>
-                </div>
-                <div className="mt-2 p-2 bg-slate-800/30 rounded text-slate-300">
-                  <div className="flex justify-between">
-                    <span>main.js</span>
-                    <span className="text-green-400">142kB</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>vendor.js</span>
-                    <span className="text-amber-400">890kB</span>
-                  </div>
-                </div>
+              <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+                <Ball
+                  className={` w-2.5 h-2.5 rounded-full opacity-30 md:opacity-100 ${
+                    theme === 'dark' ? 'bg-slate-500/30' : 'bg-[#40BBC3]'
+                  }`}
+                />
+                <Ball
+                  className={` w-8 h-8 rounded-full opacity-30 md:opacity-100 ${
+                    theme === 'dark' ? 'bg-slate-500/30' : 'bg-[#A0DDE2]'
+                  }`}
+                />
+                <Ball
+                  className={` w-14 h-14 rounded-full opacity-30 md:opacity-100 ${
+                    theme === 'dark' ? 'bg-slate-500/30' : 'bg-[#A0DDE2]'
+                  }`}
+                />
+                <Ball
+                  className={` w-14 h-14 rounded-full opacity-30 md:opacity-100 ${
+                    theme === 'dark' ? 'bg-slate-500/30' : 'bg-[#A0DDE2]'
+                  }`}
+                />
+                <Ball
+                  className={` w-8 h-8 rounded-full opacity-30 md:opacity-100 ${
+                    theme === 'dark' ? 'bg-slate-500/30' : 'bg-[#A0DDE2]'
+                  }`}
+                />
+                <Ball
+                  className={` w-14 h-14 rounded-full opacity-30 md:opacity-100 ${
+                    theme === 'dark' ? 'bg-slate-500/30' : 'bg-[#A0DDE2]'
+                  }`}
+                />
+                <Ball
+                  className={` w-8 h-8 rounded-full opacity-30 md:opacity-100 ${
+                    theme === 'dark' ? 'bg-slate-500/30' : 'bg-[#A0DDE2]'
+                  }`}
+                />
+                <Ball
+                  className={` w-14 h-14 rounded-full opacity-30 md:opacity-100 ${
+                    theme === 'dark' ? 'bg-slate-500/30' : 'bg-[#A0DDE2]'
+                  }`}
+                />
+                <Ball
+                  className={` w-14 h-14 rounded-full opacity-30 md:opacity-100 ${
+                    theme === 'dark' ? 'bg-slate-500/30' : 'bg-[#A0DDE2]'
+                  }`}
+                />
               </div>
-              <div
-                className={`relative z-10 space-y-4 text-sm font-mono ${theme === 'dark' ? 'text-cyan-400' : 'text-cyan-600'}`}
-              >
-                <div className="flex items-center gap-2">
-                  <span>{'<Portfolio />'}</span>
-                  <span
-                    className="h-2 w-2 rounded-full bg-green-500 animate-pulse"
-                    title="Available for hire"
-                  ></span>
+              <div className="relative z-10">
+                <div className="relative z-20">
+                  {TypewriterChangeText(theme)}
+                </div>
+                <div className="relative  space-y-2 text-xs font-mon py-2">
+                  <div className="text-slate-500">
+                    {'[10:42:01] Starting build...'}
+                  </div>
+                  <div className="text-green-500">
+                    {'✔ Compiling TypeScript'}
+                  </div>
+                  <div className="text-green-500">{'✔ Optimizing Assets'}</div>
+                  <div className="flex gap-2 text-slate-400">
+                    <span>{'[DONE]'}</span>
+                    <span className="text-cyan-500">{'Ready in 420ms'}</span>
+                  </div>
+                  <div className="mt-2 p-2 bg-slate-800/30 rounded text-slate-300">
+                    <div className="flex justify-between">
+                      <span>main.js</span>
+                      <span className="text-green-400">142kB</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>vendor.js</span>
+                      <span className="text-amber-400">890kB</span>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className={`relative space-y-4 text-sm font-mono ${theme === 'dark' ? 'text-cyan-400' : 'text-cyan-600'}`}
+                >
+                  <div className="flex items-center gap-2">
+                    <span>{'<Portfolio />'}</span>
+                    <span
+                      className="h-2 w-2 rounded-full bg-green-500 animate-pulse"
+                      title="Available for hire"
+                    ></span>
+                  </div>
+
+                  <div
+                    className={`ml-4 ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`}
+                  >
+                    <div>
+                      {'skills: ['}
+                      <span className="text-orange-400">"React"</span>,
+                      <span className="text-green-400">"Nuxt"</span>,
+                      <span className="text-blue-400">"TypeScript"</span>......
+                      {']'}
+                    </div>
+                    <div>
+                      {'experience: '}
+                      <span className="text-amber-500">"3+ years"</span>
+                    </div>
+                    <div>
+                      {'location: '}
+                      <span className="text-amber-500">"Remote / Lagos"</span>
+                    </div>
+                  </div>
+
+                  <div>{'</Portfolio>'}</div>
                 </div>
 
                 <div
-                  className={`ml-4 ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`}
+                  className={`relative space-y-4 text-sm font-mono ${theme === 'dark' ? 'text-purple-400' : 'text-purple-600'}`}
                 >
-                  <div>
-                    {'skills: ['}
-                    <span className="text-orange-400">"React"</span>,
-                    <span className="text-green-400">"Nuxt"</span>,
-                    <span className="text-blue-400">"TypeScript"</span>......
-                    {']'}
+                  <div>{'<Connect />'}</div>
+                  <div
+                    className={`ml-4 ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`}
+                  >
+                    <div>
+                      {'github: '}
+                      <a
+                        href="https://github.com/Kiraadaves "
+                        className="text-orange-400 cursor-pointer hover:underline"
+                      >
+                        "@Kiraadaves"
+                      </a>
+                    </div>
+                    <div>
+                      {'linkedin: '}
+                      <a
+                        href="https://www.linkedin.com/in/chinwe-chukwuogor-400404118/"
+                        className="text-blue-400 cursor-pointer hover:underline"
+                      >
+                        "Chinwe Nwankwo"
+                      </a>
+                    </div>
+                    <div>
+                      {'twitter: '}
+                      <a
+                        href="https://x.com/CKiraadaves"
+                        className="text-blue-400 cursor-pointer hover:underline"
+                      >
+                        "@CKiraadaves"
+                      </a>
+                    </div>
+                    <div>
+                      {'email: '}
+                      <span className="text-amber-500">
+                        "chukwuogorchinwe@gmail.com"
+                      </span>
+                    </div>
+                    <div className="">
+                      {'available_for_hire: '}
+                      <span className="text-green-500">true</span>
+                    </div>
                   </div>
-                  <div>
-                    {'experience: '}
-                    <span className="text-amber-500">"3+ years"</span>
-                  </div>
-                  <div>
-                    {'location: '}
-                    <span className="text-amber-500">"Remote / Lagos"</span>
-                  </div>
+                  <div>{'</Connect>'}</div>
                 </div>
-
-                <div>{'</Portfolio>'}</div>
-              </div>
-
-              <div
-                className={`relative z-10 space-y-4 text-sm font-mono ${theme === 'dark' ? 'text-purple-400' : 'text-purple-600'}`}
-              >
-                <div>{'<Connect />'}</div>
-                <div
-                  className={`ml-4 ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`}
-                >
-                  <div>
-                    {'github: '}
-                    <a
-                      href="https://github.com/Kiraadaves "
-                      className="text-orange-400 cursor-pointer hover:underline"
-                    >
-                      "@Kiraadaves"
-                    </a>
-                  </div>
-                  <div>
-                    {'linkedin: '}
-                    <a
-                      href="https://www.linkedin.com/in/chinwe-chukwuogor-400404118/"
-                      className="text-blue-400 cursor-pointer hover:underline"
-                    >
-                      "Chinwe Nwankwo"
-                    </a>
-                  </div>
-                  <div>
-                    {'twitter: '}
-                    <a
-                      href="https://x.com/CKiraadaves"
-                      className="text-blue-400 cursor-pointer hover:underline"
-                    >
-                      "@CKiraadaves"
-                    </a>
-                  </div>
-                  <div>
-                    {'email: '}
-                    <span className="text-amber-500">
-                      "chukwuogorchinwe@gmail.com"
-                    </span>
-                  </div>
-                  <div className="">
-                    {'available_for_hire: '}
-                    <span className="text-green-500">true</span>
-                  </div>
-                </div>
-                <div>{'</Connect>'}</div>
               </div>
             </div>
           </div>

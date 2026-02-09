@@ -31,12 +31,12 @@ const stack = [
   {
     name: 'VueJS',
     icon: <RiVuejsLine className="text-[#ef6a5bf5] h-24 w-24" />,
-    image: '/nuxt',
+    image: '/images/nuxt.png',
   },
   {
     name: 'NodeJS',
     icon: <DiNodejs />,
-    image: '/node',
+    image: '/images/node.png',
   },
   {
     name: 'Express',
@@ -88,71 +88,59 @@ const stack = [
   },
 ]
 
-const skills = [
-  {
-    category: 'Frontend',
-    items: ['React', 'Vue.js', 'TypeScript', 'Tailwind CSS', 'D3.js'],
-  },
-  {
-    category: 'Backend',
-    items: ['Node.js', 'Python', 'Go', 'PostgreSQL', 'MongoDB'],
-  },
-  {
-    category: 'DevOps',
-    items: ['Docker', 'Kubernetes', 'AWS', 'CI/CD', 'Terraform'],
-  },
-]
-
 export default function Skills() {
   const { theme } = useTheme()
 
   return (
     <section
       id="skills"
-      className={`relative z-10 px-5 lg:px-15 py-32 border-t ${theme === 'dark' ? 'border-slate-800' : 'border-slate-200'}`}
+      className={`relative z-10 px-5 py-16 lg:px-15 lg:py-32 border-t ${theme === 'dark' ? 'border-slate-800' : 'border-slate-200'}`}
     >
-      <div className="mb-16">
+      <div className="mb-12">
         <p
-          className={`font-mono text-sm mb-4 ${theme === 'dark' ? 'text-cyan-400' : 'text-cyan-600'}`}
+          className={`font-mono text-sm lg:text-base mb-4 ${theme === 'dark' ? 'text-cyan-400' : 'text-cyan-600'}`}
         >
           TOOLKIT
         </p>
         <h2
-          className={`text-5xl font-black tracking-tighter ${theme === 'dark' ? '' : 'text-slate-950'}`}
+          className={`text-5xl font-black tracking-tighter ${theme === 'dark' ? '' : 'text-purple-500'}`}
         >
           Technologies I master
         </h2>
       </div>
 
-      <div className="grid grid-cols-3 gap-8">
-        {skills.map((skillGroup) => (
+      <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6  gap-4  ">
+        {stack.map((stacks, index) => (
           <div
-            key={skillGroup.category}
-            className={`border rounded-lg p-8 transition-colors ${
+            key={index}
+            data-aos="fade-right"
+            data-aos-delay={index * 100}
+            className={`border rounded-lg items-center py-8 flex flex-col gap-8  transition-all duration-500 ease-in-out ${
               theme === 'dark'
                 ? 'border-slate-800 hover:border-cyan-400/50'
                 : 'border-slate-200 hover:border-cyan-600/50'
             }`}
           >
+            <div className="">
+              {stacks.name === 'VueJS' || stacks.name === 'NodeJS' ? (
+                <img
+                  alt={`${stacks.name} logo`}
+                  src={stacks.image}
+                  width={100}
+                  height={100}
+                  className={`${
+                    stacks.name === 'VueJS' ? 'h-24 w-28' : 'w-28'
+                  }`}
+                />
+              ) : (
+                stacks.icon
+              )}
+            </div>
             <h3
               className={`text-lg font-black mb-6 ${theme === 'dark' ? 'text-cyan-400' : 'text-cyan-600'}`}
             >
-              {skillGroup.category}
+              {stacks.name}
             </h3>
-            <ul className="space-y-3">
-              {skillGroup.items.map((skill) => (
-                <li key={skill} className="flex items-center gap-3">
-                  <div
-                    className={`w-2 h-2 rounded-full ${theme === 'dark' ? 'bg-cyan-400' : 'bg-cyan-600'}`}
-                  />
-                  <span
-                    className={`font-medium ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}
-                  >
-                    {skill}
-                  </span>
-                </li>
-              ))}
-            </ul>
           </div>
         ))}
       </div>
