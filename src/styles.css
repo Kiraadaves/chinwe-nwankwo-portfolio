@@ -190,61 +190,16 @@ button {
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-start;
-  padding: 60px;
+
   position: relative;
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 .card-content {
   position: relative;
   z-index: 2;
   max-width: 600px;
-}
-
-.card h2 {
-  letter-spacing: -1px;
-  color: white;
-}
-
-.card p {
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.6;
-}
-
-.card-number {
-  position: absolute;
-  bottom: 40px;
-  right: 60px;
-  font-size: 120px;
-  font-weight: 900;
-  opacity: 0.1;
-  color: white;
-  font-family: 'Monaco', monospace;
-}
-
-/* Individual card colors with gradients */
-.card-1 {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
-
-.card-2 {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-}
-
-.card-3 {
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-}
-
-.card-4 {
-  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-}
-
-.card-5 {
-  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
 }
 
 /* Instructions */
@@ -312,4 +267,49 @@ button {
   to {
     width: 100%;
   }
+}
+
+/* Footer sliding texr */
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+/*Scroll bars*/
+/* 1. For Chrome, Edge, Safari, and Opera (Webkit) */
+::-webkit-scrollbar {
+  width: 12px; /* Custom vertical width */
+  height: 12px; /* Custom horizontal height */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the track (background) */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the draggable thumb */
+  border-radius: 10px; /* Roundness of the thumb */
+  border: 2px solid #f1f1f1; /* Adds padding effect around thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Thumb color on hover */
+}
+
+/* 2. For Firefox (Standardized Properties) */
+* {
+  scrollbar-width: thin; /* Options: auto, thin, none */
+  scrollbar-color: #888 #f1f1f1; /* thumb-color track-color */
 }

@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ScrollRouteImport } from './routes/scroll'
+import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiRemyChatRouteImport } from './routes/api.remy-chat'
 
 const ScrollRoute = ScrollRouteImport.update({
   id: '/scroll',
   path: '/scroll',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -31,30 +37,34 @@ const ApiRemyChatRoute = ApiRemyChatRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/projects': typeof ProjectsRoute
   '/scroll': typeof ScrollRoute
   '/api/remy-chat': typeof ApiRemyChatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/projects': typeof ProjectsRoute
   '/scroll': typeof ScrollRoute
   '/api/remy-chat': typeof ApiRemyChatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/projects': typeof ProjectsRoute
   '/scroll': typeof ScrollRoute
   '/api/remy-chat': typeof ApiRemyChatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/scroll' | '/api/remy-chat'
+  fullPaths: '/' | '/projects' | '/scroll' | '/api/remy-chat'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/scroll' | '/api/remy-chat'
-  id: '__root__' | '/' | '/scroll' | '/api/remy-chat'
+  to: '/' | '/projects' | '/scroll' | '/api/remy-chat'
+  id: '__root__' | '/' | '/projects' | '/scroll' | '/api/remy-chat'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ProjectsRoute: typeof ProjectsRoute
   ScrollRoute: typeof ScrollRoute
   ApiRemyChatRoute: typeof ApiRemyChatRoute
 }
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/scroll'
       fullPath: '/scroll'
       preLoaderRoute: typeof ScrollRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ProjectsRoute: ProjectsRoute,
   ScrollRoute: ScrollRoute,
   ApiRemyChatRoute: ApiRemyChatRoute,
 }

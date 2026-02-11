@@ -12,12 +12,22 @@ export default function Cta() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>
           <h2
+            data-aos="fade-up"
+            data-aos-delay="200"
             className={`text-5xl font-black tracking-tighter mb-6 ${theme === 'dark' ? '' : 'text-slate-950'}`}
           >
             Ready to
-            <span className={`block text-purple-500`}>collaborate?</span>
+            <span
+              data-aos="fade-up"
+              data-aos-delay="400"
+              className={`block text-purple-500`}
+            >
+              collaborate?
+            </span>
           </h2>
           <p
+            data-aos="fade-up"
+            data-aos-delay="400"
             className={`text-base lg:text-lg mb-8 max-w-md leading-relaxed ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`}
           >
             I'm always interested in interesting projects and creative
@@ -27,6 +37,8 @@ export default function Cta() {
 
         <div className="space-y-4">
           <a
+            data-aos="fade-left"
+            data-aos-delay="800"
             href="mailto:chukwuogorchinwe@gmail.com"
             className={`flex flex-col lg:flex-row items-center gap-4 p-3 lg:p-6 border rounded-lg transition-all group ${
               theme === 'dark'
@@ -52,6 +64,8 @@ export default function Cta() {
           </a>
 
           <a
+            data-aos="fade-left"
+            data-aos-delay="1400"
             href="https://github.com/Kiraadaves"
             target="_blank"
             rel="noopener noreferrer"

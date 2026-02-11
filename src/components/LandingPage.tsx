@@ -6,10 +6,21 @@ import Testimonials from './Testimonials'
 import Cta from './Cta'
 import Footer from './Footer'
 import Hero from './Hero'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 export default function LandingPage() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const { theme } = useTheme()
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: 'ease-out',
+      once: true,
+      offset: 0,
+    })
+  }, [])
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -23,7 +34,6 @@ export default function LandingPage() {
     <div
       className={`relative transition-colors duration-200 ${theme === 'dark' ? 'bg-slate-950 text-white' : 'bg-white text-slate-950'}`}
     >
-      {/* Animated background elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div
           className={`absolute w-96 h-96 rounded-full blur-3xl transition-all duration-100 ${

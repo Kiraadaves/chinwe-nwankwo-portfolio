@@ -183,11 +183,15 @@ export default function Testimonials() {
     >
       <div className="lg:w-[35%]">
         <p
+          data-aos="fade-up"
+          data-aos-delay="200"
           className={`font-mono text-sm lg:text-base mb-4 ${theme === 'dark' ? 'text-cyan-400' : 'text-cyan-600'}`}
         >
           SOCIAL PROOF
         </p>
         <h2
+          data-aos="fade-up"
+          data-aos-delay="400"
           className={`text-5xl font-black tracking-tighter ${theme === 'dark' ? '' : 'text-slate-950'}`}
         >
           What clients
@@ -208,6 +212,8 @@ export default function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <CarouselItem
               key={index}
+              data-aos="fade-left"
+              data-aos-delay="200"
               className="md:pl-10 basis-full md:basis-[70%] lg:basis-[80%]"
             >
               <div

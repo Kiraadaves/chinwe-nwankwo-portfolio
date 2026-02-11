@@ -1,24 +1,20 @@
-import { Link, useNavigate } from '@tanstack/react-router'
+import { useNavigate } from '@tanstack/react-router'
 
 import { useState } from 'react'
 import {
-  ChevronDown,
-  ChevronRight,
+  Download,
   FileBraces,
-  Globe,
   Handshake,
   Home,
   Mail,
   Menu,
   Moon,
-  Network,
-  SquareFunction,
-  StickyNote,
   Sun,
   X,
 } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { cn } from '@/lib/utils'
+import { downloadFileAtURL } from '@/lib/download-cv'
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
@@ -39,7 +35,7 @@ export default function Header() {
   return (
     <>
       <header
-        className={`z-20 border-b sticky top-0 flex justify-between items-center px-2 py-6 ${theme === 'dark' ? 'border-slate-800 ' : 'border-slate-200 bg-white/80'} backdrop-blur-md`}
+        className={`z-20 border-b sticky top-0 flex justify-between items-center px-5 lg:px-15 py-6 ${theme === 'dark' ? 'border-slate-800 ' : 'border-slate-200 bg-white/80'} backdrop-blur-md`}
       >
         <button
           onClick={() => setIsOpen(true)}
@@ -79,55 +75,65 @@ export default function Header() {
         }`}
       >
         <div className="flex items-center justify-between p-4 border-b border-gray-700">
-          <h2 className="text-xl font-bold">Chinwe Nwankwo</h2>
+          <h2
+            className={`text-xl font-bold ${theme === 'dark' ? 'text-white' : 'text-slate-600 '}`}
+          >
+            Chinwe Nwankwo
+          </h2>
           <button
             onClick={() => setIsOpen(false)}
             className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
             aria-label="Close menu"
           >
-            <X size={24} />
+            <X
+              size={24}
+              className={`${theme === 'dark' ? 'text-white' : 'text-black'}`}
+            />
           </button>
         </div>
 
         <nav className="flex-1 p-4 overflow-y-auto">
-          <button
-            className={cn(
-              'flex items-center gap-3 p-3 rounded-lg bg-purple-500 text-white transition-colors mb-2 w-full',
-            )}
-          >
-            <Home size={20} />
-            <span className="font-medium">Home</span>
-          </button>{' '}
-          <button
-            className={cn(
-              'flex items-center gap-3 p-3 rounded-lg bg-purple-500 text-white transition-colors mb-2 w-full',
-            )}
-          >
-            <FileBraces size={20} />
-            <span className="font-medium">Projects</span>
-          </button>{' '}
-          <button
-            className={cn(
-              'flex items-center gap-3 p-3 rounded-lg bg-purple-500 text-white transition-colors mb-2 w-full',
-            )}
-          >
-            <Handshake size={20} />
-            <span className="font-medium">Testimonials</span>
-          </button>{' '}
-          <button
-            className={cn(
-              'flex items-center gap-3 p-3 rounded-lg bg-purple-500 text-white transition-colors mb-2 w-full',
-            )}
-          >
-            <Mail size={20} />
-            <span className="font-medium">Contact</span>
-          </button>
-          {/* Demo Links Start */}
-          {/* Demo Links End */}
+          {[
+            { name: 'Home', icon: <Home size={20} />, id: 'home' },
+            {
+              name: 'Projects',
+              icon: <FileBraces size={20} />,
+              id: 'projects',
+            },
+            {
+              name: 'Testimonials',
+              icon: <Handshake size={20} />,
+              id: 'testimonials',
+            },
+            { name: 'Contact', icon: <Mail size={20} />, id: 'contact' },
+          ].map((item) => (
+            <button
+              key={item.id}
+              onClick={() => {
+                handleSectionClick(item.id)
+                setIsOpen(false)
+              }}
+              className={cn(
+                'flex items-center gap-3 p-3 rounded-lg transition-all mb-2 w-full',
+                'bg-purple-500 hover:bg-purple-600 text-white shadow-md active:scale-95',
+              )}
+            >
+              {item.icon}
+              <span className="font-medium">{item.name}</span>
+            </button>
+          ))}
         </nav>
 
-        <div className="p-4 border-t border-gray-700 bg-gray-800 flex flex-col gap-2">
-          <p>RemyButton</p>
+        <div className="p-4 border-t border-gray-700 ">
+          <button
+            onClick={() => {
+              downloadFileAtURL()
+            }}
+            className="w-full flex items-center justify-center gap-2 py-3 px-4  bg-purple-500 hover:bg-purple-600  text-white rounded-xl font-bold shadow-lg transition-all active:scale-95"
+          >
+            <Download size={18} />
+            Download CV
+          </button>
         </div>
       </aside>
     </>

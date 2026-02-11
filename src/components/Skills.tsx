@@ -98,11 +98,15 @@ export default function Skills() {
     >
       <div className="mb-12">
         <p
+          data-aos="fade-up"
+          data-aos-delay="200"
           className={`font-mono text-sm lg:text-base mb-4 ${theme === 'dark' ? 'text-cyan-400' : 'text-cyan-600'}`}
         >
           TOOLKIT
         </p>
         <h2
+          data-aos="fade-up"
+          data-aos-delay="400"
           className={`text-5xl font-black tracking-tighter ${theme === 'dark' ? '' : 'text-purple-500'}`}
         >
           Technologies I master
@@ -113,8 +117,8 @@ export default function Skills() {
         {stack.map((stacks, index) => (
           <div
             key={index}
-            data-aos="fade-right"
-            data-aos-delay={index * 100}
+            data-aos="fade-up"
+            data-aos-delay={600 + index * 150}
             className={`border rounded-lg items-center py-8 flex flex-col gap-8  transition-all duration-500 ease-in-out ${
               theme === 'dark'
                 ? 'border-slate-800 hover:border-cyan-400/50'
