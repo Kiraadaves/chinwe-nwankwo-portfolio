@@ -455,7 +455,6 @@ const Projects = () => {
           >
             <div
               data-aos="zoom-in-down"
-              data-aos-duration="1000"
               data-aos-once="true"
               className="rounded-[10px] shadow-lg border border-slate-300 w-full lg:w-1/2  relative overflow-hidden h-87.5 lg:h-112.5 "
             >
@@ -487,7 +486,12 @@ const Projects = () => {
                         {project.description}
                       </p>
                     </div>
-                    <div className="flex items-center gap-4 lg:gap-6 justify-start">
+                    <div
+                      data-aos="fade-up"
+                      data-aos-delay="400"
+                      data-aos-once="true"
+                      className="flex items-center gap-4 lg:gap-6 justify-start"
+                    >
                       <a
                         href={project.githubUrl}
                         target="_blank"
@@ -508,7 +512,7 @@ const Projects = () => {
                   </div>
                   <div
                     data-aos="fade-up"
-                    data-aos-delay="400"
+                    data-aos-delay="500"
                     data-aos-once="true"
                     className="flex items-center gap-2.5 flex-wrap"
                   >
