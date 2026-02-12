@@ -1,4 +1,4 @@
-import { useNavigate } from '@tanstack/react-router'
+import { useLocation, useNavigate } from '@tanstack/react-router'
 
 import { useState } from 'react'
 import {
@@ -19,6 +19,9 @@ import { downloadFileAtURL } from '@/lib/download-cv'
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const { theme, setTheme } = useTheme()
+  const location = useLocation()
+  const isProjectPage = location.pathname === '/projects'
+
   const navigate = useNavigate()
 
   const handleSectionClick = async (sectionId: string) => {
@@ -91,7 +94,6 @@ export default function Header() {
             />
           </button>
         </div>
-
         <nav className="flex-1 p-4 overflow-y-auto">
           {[
             { name: 'Home', icon: <Home size={20} />, id: 'home' },
@@ -106,22 +108,24 @@ export default function Header() {
               id: 'testimonials',
             },
             { name: 'Contact', icon: <Mail size={20} />, id: 'contact' },
-          ].map((item) => (
-            <button
-              key={item.id}
-              onClick={() => {
-                handleSectionClick(item.id)
-                setIsOpen(false)
-              }}
-              className={cn(
-                'flex items-center gap-3 p-3 rounded-lg transition-all mb-2 w-full',
-                'bg-purple-500 hover:bg-purple-600 text-white shadow-md active:scale-95',
-              )}
-            >
-              {item.icon}
-              <span className="font-medium">{item.name}</span>
-            </button>
-          ))}
+          ]
+            .filter((item) => (isProjectPage ? item.id === 'home' : true))
+            .map((item) => (
+              <button
+                key={item.id}
+                onClick={() => {
+                  handleSectionClick(item.id)
+                  setIsOpen(false)
+                }}
+                className={cn(
+                  'flex items-center gap-3 p-3 rounded-lg transition-all mb-2 w-full',
+                  'bg-purple-500 hover:bg-purple-600 text-white shadow-md active:scale-95',
+                )}
+              >
+                {item.icon}
+                <span className="font-medium">{item.name}</span>
+              </button>
+            ))}
         </nav>
 
         <div className="p-4 border-t border-gray-700 ">
