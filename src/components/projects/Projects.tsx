@@ -487,7 +487,7 @@ const Projects = () => {
                         {project.description}
                       </p>
                     </div>
-                    <div className="flex items-center gap-4 lg:gap-6 justify-center md:justify-start">
+                    <div className="flex items-center gap-4 lg:gap-6 justify-start">
                       <a
                         href={project.githubUrl}
                         target="_blank"
