@@ -12,11 +12,13 @@ const TypewriterChangeText = (theme: string | undefined) => {
     `Let's build something together!`,
   ]
 
+  const [mounted, setMounted] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [displayedText, setDisplayedText] = useState('')
   const [isDeleting, setIsDeleting] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
     const currentText = changingText[currentIndex]
     const timer = setTimeout(
       () => {
