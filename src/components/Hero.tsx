@@ -12,13 +12,11 @@ const TypewriterChangeText = (theme: string | undefined) => {
     `Let's build something together!`,
   ]
 
-  const [mounted, setMounted] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [displayedText, setDisplayedText] = useState('')
   const [isDeleting, setIsDeleting] = useState(false)
 
   useEffect(() => {
-    setMounted(true)
     const currentText = changingText[currentIndex]
     const timer = setTimeout(
       () => {
@@ -49,7 +47,7 @@ const TypewriterChangeText = (theme: string | undefined) => {
 
   return (
     <p
-      className={`z-20 text-xl mb-2 ${mounted && theme === 'dark' ? ' text-cyan-400' : 'text-purple-600'}`}
+      className={`z-20 text-xl mb-2 ${theme === 'dark' ? ' text-cyan-400' : 'text-purple-600'}`}
     >
       <span>{displayedText}</span>
       <span className="animate-pulse">|</span>
@@ -108,10 +106,7 @@ const Ball = ({ className }: { className: string }) => {
 
 export default function Hero() {
   const { theme } = useTheme()
-  const [mounted, setMounted] = useState(false)
-  useEffect(() => {
-    setMounted(true)
-  }, [])
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     if (element) {
@@ -127,7 +122,7 @@ export default function Hero() {
             <div>
               <p
                 data-aos="fade-up"
-                className={`font-mono text-sm lg:text-base mb-4 animate-pulse ${mounted && theme === 'dark' ? 'text-cyan-400' : 'text-cyan-600'}`}
+                className={`font-mono text-sm lg:text-base mb-4 animate-pulse ${theme === 'dark' ? 'text-cyan-400' : 'text-cyan-600'}`}
               >
                 FRONTEND DEVELOPER
               </p>
@@ -150,7 +145,7 @@ export default function Hero() {
                 <span
                   data-aos="fade-up"
                   data-aos-delay="600"
-                  className={`block bg-linear-to-r ${mounted && theme === 'dark' ? 'from-cyan-400 via-blue-400 to-purple-500' : 'from-cyan-600 via-blue-500 to-purple-600'} bg-clip-text text-transparent`}
+                  className={`block bg-linear-to-r ${theme === 'dark' ? 'from-cyan-400 via-blue-400 to-purple-500' : 'from-cyan-600 via-blue-500 to-purple-600'} bg-clip-text text-transparent`}
                 >
                   impossible web
                 </span>
@@ -159,7 +154,7 @@ export default function Hero() {
             <p
               data-aos="fade-up"
               data-aos-delay="800"
-              className={`text-base lg:text-lg max-w-xl leading-relaxed ${mounted && theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}
+              className={`text-base lg:text-lg max-w-xl leading-relaxed ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}
             >
               I craft high-performance web experiences that push boundaries.
               Specializing in interactive frontends, real-time systems, and
@@ -173,7 +168,7 @@ export default function Hero() {
               <button
                 onClick={() => scrollToSection('projects')}
                 className={`py-3 px-4 lg:px-8 lg:py-4 font-bold rounded-lg transition-all hover:scale-105 active:scale-95 ${
-                  mounted && theme === 'dark'
+                  theme === 'dark'
                     ? 'bg-cyan-500 text-black hover:bg-cyan-400'
                     : 'bg-cyan-600 text-white hover:bg-cyan-500'
                 }`}
@@ -185,7 +180,7 @@ export default function Hero() {
                   downloadFileAtURL()
                 }}
                 className={`py-3 px-4 lg:px-8 lg:py-4 border-2 font-bold rounded-lg transition-all ${
-                  mounted && theme === 'dark'
+                  theme === 'dark'
                     ? 'border-slate-700 hover:border-cyan-400 hover:text-cyan-400'
                     : 'border-slate-300 hover:border-cyan-600 hover:text-cyan-600'
                 }`}
@@ -202,76 +197,58 @@ export default function Hero() {
               data-aos="zoom-in-up"
               data-aos-delay="200"
               className={`relative aspect-square rounded-2xl border p-4 lg:p-8 backdrop-blur-sm  ${
-                mounted && theme === 'dark'
+                theme === 'dark'
                   ? 'bg-linear-to-br from-cyan-500/20 to-purple-500/20 border-slate-700'
                   : 'bg-linear-to-br from-cyan-300/20 to-purple-300/20 border-slate-300'
               }`}
             >
               <div
-                className={`absolute inset-0 rounded-2xl opacity-50 z-0 ${mounted && theme === 'dark' ? 'bg-linear-to-t from-slate-950 to-transparent' : 'bg-linear-to-t from-white to-transparent'}`}
+                className={`absolute inset-0 rounded-2xl opacity-50 z-0 ${theme === 'dark' ? 'bg-linear-to-t from-slate-950 to-transparent' : 'bg-linear-to-t from-white to-transparent'}`}
               />
               <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
                 <Ball
                   className={` w-2.5 h-2.5 rounded-full opacity-30 md:opacity-100 ${
-                    mounted && theme === 'dark'
-                      ? 'bg-slate-500/30'
-                      : 'bg-[#40BBC3]'
+                    theme === 'dark' ? 'bg-slate-500/30' : 'bg-[#40BBC3]'
                   }`}
                 />
                 <Ball
                   className={` w-8 h-8 rounded-full opacity-30 md:opacity-100 ${
-                    mounted && theme === 'dark'
-                      ? 'bg-slate-500/30'
-                      : 'bg-[#A0DDE2]'
+                    theme === 'dark' ? 'bg-slate-500/30' : 'bg-[#A0DDE2]'
                   }`}
                 />
                 <Ball
                   className={` w-14 h-14 rounded-full opacity-30 md:opacity-100 ${
-                    mounted && theme === 'dark'
-                      ? 'bg-slate-500/30'
-                      : 'bg-[#A0DDE2]'
+                    theme === 'dark' ? 'bg-slate-500/30' : 'bg-[#A0DDE2]'
                   }`}
                 />
                 <Ball
                   className={` w-14 h-14 rounded-full opacity-30 md:opacity-100 ${
-                    mounted && theme === 'dark'
-                      ? 'bg-slate-500/30'
-                      : 'bg-[#A0DDE2]'
+                    theme === 'dark' ? 'bg-slate-500/30' : 'bg-[#A0DDE2]'
                   }`}
                 />
                 <Ball
                   className={` w-8 h-8 rounded-full opacity-30 md:opacity-100 ${
-                    mounted && theme === 'dark'
-                      ? 'bg-slate-500/30'
-                      : 'bg-[#A0DDE2]'
+                    theme === 'dark' ? 'bg-slate-500/30' : 'bg-[#A0DDE2]'
                   }`}
                 />
                 <Ball
                   className={` w-14 h-14 rounded-full opacity-30 md:opacity-100 ${
-                    mounted && theme === 'dark'
-                      ? 'bg-slate-500/30'
-                      : 'bg-[#A0DDE2]'
+                    theme === 'dark' ? 'bg-slate-500/30' : 'bg-[#A0DDE2]'
                   }`}
                 />
                 <Ball
                   className={` w-8 h-8 rounded-full opacity-30 md:opacity-100 ${
-                    mounted && theme === 'dark'
-                      ? 'bg-slate-500/30'
-                      : 'bg-[#A0DDE2]'
+                    theme === 'dark' ? 'bg-slate-500/30' : 'bg-[#A0DDE2]'
                   }`}
                 />
                 <Ball
                   className={` w-14 h-14 rounded-full opacity-30 md:opacity-100 ${
-                    mounted && theme === 'dark'
-                      ? 'bg-slate-500/30'
-                      : 'bg-[#A0DDE2]'
+                    theme === 'dark' ? 'bg-slate-500/30' : 'bg-[#A0DDE2]'
                   }`}
                 />
                 <Ball
                   className={` w-14 h-14 rounded-full opacity-30 md:opacity-100 ${
-                    mounted && theme === 'dark'
-                      ? 'bg-slate-500/30'
-                      : 'bg-[#A0DDE2]'
+                    theme === 'dark' ? 'bg-slate-500/30' : 'bg-[#A0DDE2]'
                   }`}
                 />
               </div>
@@ -303,7 +280,7 @@ export default function Hero() {
                   </div>
                 </div>
                 <div
-                  className={`relative space-y-4 text-sm font-mono ${mounted && theme === 'dark' ? 'text-cyan-400' : 'text-cyan-600'}`}
+                  className={`relative space-y-4 text-sm font-mono ${theme === 'dark' ? 'text-cyan-400' : 'text-cyan-600'}`}
                 >
                   <div className="flex items-center gap-2">
                     <span>{'<Portfolio />'}</span>
@@ -314,7 +291,7 @@ export default function Hero() {
                   </div>
 
                   <div
-                    className={`ml-4 ${mounted && theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`}
+                    className={`ml-4 ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`}
                   >
                     <div>
                       {'skills: ['}
@@ -337,11 +314,11 @@ export default function Hero() {
                 </div>
 
                 <div
-                  className={`relative space-y-4 text-sm font-mono ${mounted && theme === 'dark' ? 'text-purple-400' : 'text-purple-600'}`}
+                  className={`relative space-y-4 text-sm font-mono ${theme === 'dark' ? 'text-purple-400' : 'text-purple-600'}`}
                 >
                   <div>{'<Connect />'}</div>
                   <div
-                    className={`ml-4 ${mounted && theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`}
+                    className={`ml-4 ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`}
                   >
                     <div>
                       {'github: '}

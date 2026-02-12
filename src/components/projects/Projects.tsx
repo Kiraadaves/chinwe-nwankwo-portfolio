@@ -1,5 +1,4 @@
 import { useTheme } from 'next-themes'
-import { useEffect, useState } from 'react'
 import { FaGithub } from 'react-icons/fa6'
 
 interface Project {
@@ -442,13 +441,10 @@ const projects: Project[] = [
 ]
 const Projects = () => {
   const { theme } = useTheme()
-  const [mounted, setMounted] = useState(false)
-  useEffect(() => {
-    setMounted(true)
-  }, [])
+
   return (
     <section
-      className={`relative z-10 px-5 py-16 lg:px-15  border-t ${mounted && theme === 'dark' ? 'border-slate-800' : 'border-slate-200'}`}
+      className={`relative z-10 px-5 py-16 lg:px-15  border-t ${theme === 'dark' ? 'border-slate-800' : 'border-slate-200'}`}
     >
       <div className="space-y-20 lg:space-y-30 ">
         {projects.map((project, index) => (
@@ -478,7 +474,7 @@ const Projects = () => {
                         data-aos="fade-up"
                         data-aos-delay="200"
                         data-aos-once="true"
-                        className={`${mounted && theme === 'dark' ? 'text-white' : 'text-purple-500'} font-jakarta font-bold text-[30px] lg:text-[40px]`}
+                        className={`${theme === 'dark' ? 'text-white' : 'text-purple-500'} font-jakarta font-bold text-[30px] lg:text-[40px]`}
                       >
                         {project.title}
                       </h2>
@@ -486,7 +482,7 @@ const Projects = () => {
                         data-aos="fade-up"
                         data-aos-delay="300"
                         data-aos-once="true"
-                        className={`${mounted && theme === 'dark' ? '' : 'text-slate-950'} leading-6.5 text-sm lg:leading-7.5 text-justify lg:text-base`}
+                        className={`${theme === 'dark' ? '' : 'text-slate-950'} leading-6.5 text-sm lg:leading-7.5 text-justify lg:text-base`}
                       >
                         {project.description}
                       </p>
@@ -501,7 +497,7 @@ const Projects = () => {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`border ${mounted && theme === 'dark' ? 'bg-slate-300/20 hover:border-white text-white' : 'hover:border-purple-500 text-purple-500'}  shadow   hover:shadow-lg rounded-md py-1 px-9 transition-all duration-300 ease-in-out`}
+                        className={`border ${theme === 'dark' ? 'bg-slate-300/20 hover:border-white text-white' : 'hover:border-purple-500 text-purple-500'}  shadow   hover:shadow-lg rounded-md py-1 px-9 transition-all duration-300 ease-in-out`}
                       >
                         <FaGithub className="md:w-8 w-6 md:h-8 h-6  mx-auto" />
                       </a>
@@ -509,7 +505,7 @@ const Projects = () => {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`bg-purple-500 hover:border hover:bg-[#ffffff] text-[#ffffff] ${mounted && theme === 'dark' ? 'hover:text-black' : 'hover:text-purple-500'} hover:shadow-lg  py-2 px-9 font-bold text-xs md:text-base rounded-md text-center  transition-all duration-300 ease-in-out`}
+                        className={`bg-purple-500 hover:border hover:bg-[#ffffff] text-[#ffffff] ${theme === 'dark' ? 'hover:text-black' : 'hover:text-purple-500'} hover:shadow-lg  py-2 px-9 font-bold text-xs md:text-base rounded-md text-center  transition-all duration-300 ease-in-out`}
                       >
                         View
                       </a>
@@ -524,7 +520,7 @@ const Projects = () => {
                     {project.technologies.map((item, index) => (
                       <span
                         key={index}
-                        className={`py-0.5 px-3.5 rounded-[200px] border ${mounted && theme === 'dark' ? 'bg-slate-300/20 border-white text-white' : 'border-purple-700 text-purple-700'}  font-medium font-manrope text-xs lg:text-sm leading-7.5`}
+                        className={`py-0.5 px-3.5 rounded-[200px] border ${theme === 'dark' ? 'bg-slate-300/20 border-white text-white' : 'border-purple-700 text-purple-700'}  font-medium font-manrope text-xs lg:text-sm leading-7.5`}
                       >
                         {item}
                       </span>

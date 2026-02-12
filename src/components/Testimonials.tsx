@@ -155,7 +155,6 @@ export default function Testimonials() {
   const [api, setApi] = useState<CarouselApi>()
   const [current, setCurrent] = useState(0)
   const limit = 250
-  const [mounted, setMounted] = useState(false)
 
   const openReadMore = (activeTestimonial: Testimonials) => {
     setActiveTestimonial(activeTestimonial)
@@ -168,7 +167,6 @@ export default function Testimonials() {
   }
 
   useEffect(() => {
-    setMounted(true)
     if (!api) return
     setCurrent(api.selectedScrollSnap())
     api.on('select', () => {
@@ -181,24 +179,24 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className={`flex flex-col gap-7.5 lg:flex-row lg:items-center lg:gap-15 relative z-10 px-5 lg:px-15 py-32 border-t ${mounted && theme === 'dark' ? 'border-slate-800' : 'border-slate-200'}`}
+      className={`flex flex-col gap-7.5 lg:flex-row lg:items-center lg:gap-15 relative z-10 px-5 lg:px-15 py-32 border-t ${theme === 'dark' ? 'border-slate-800' : 'border-slate-200'}`}
     >
       <div className="lg:w-[35%]">
         <p
           data-aos="fade-up"
           data-aos-delay="200"
-          className={`font-mono text-sm lg:text-base mb-4 ${mounted && theme === 'dark' ? 'text-cyan-400' : 'text-cyan-600'}`}
+          className={`font-mono text-sm lg:text-base mb-4 ${theme === 'dark' ? 'text-cyan-400' : 'text-cyan-600'}`}
         >
           SOCIAL PROOF
         </p>
         <h2
           data-aos="fade-up"
           data-aos-delay="400"
-          className={`text-5xl font-black tracking-tighter ${mounted && theme === 'dark' ? '' : 'text-slate-950'}`}
+          className={`text-5xl font-black tracking-tighter ${theme === 'dark' ? '' : 'text-slate-950'}`}
         >
           What clients
           <span
-            className={`block ${mounted && theme === 'dark' ? 'text-purple-500' : 'text-purple-500'}`}
+            className={`block ${theme === 'dark' ? 'text-purple-500' : 'text-purple-500'}`}
           >
             are saying
           </span>
@@ -220,7 +218,7 @@ export default function Testimonials() {
             >
               <div
                 className={` h-full flex flex-col gap-5 lg:gap-8 justify-between border rounded-lg p-3 lg:p-8  transition-all  ${
-                  mounted && theme === 'dark'
+                  theme === 'dark'
                     ? 'border-slate-800 hover:border-cyan-400/50 bg-slate-900/40'
                     : 'border-purple-300 hover:border-cyan-600/50 bg-slate-50/40'
                 }`}
@@ -230,14 +228,14 @@ export default function Testimonials() {
                     src={testimonial.image}
                     alt="avatars"
                     className={`w-20 h-20 lg:w-25 lg:h-25  rounded-full border ${
-                      mounted && theme === 'dark'
+                      theme === 'dark'
                         ? 'border-slate-800 hover:border-cyan-400/50 '
                         : 'border-purple-300 hover:border-cyan-600/50 '
                     }`}
                   />
                 </div>
                 <p
-                  className={`leading-relaxed text-sm ${mounted && theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}
+                  className={`leading-relaxed text-sm ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}
                 >
                   {testimonial.content.slice(0, limit)}
                   {testimonial.content.length > limit && (
@@ -255,12 +253,12 @@ export default function Testimonials() {
                 <div className="flex flex-col gap-4 lg:flex-row lg:justify-between">
                   <div>
                     <h3
-                      className={`font-black text-lg ${mounted && theme === 'dark' ? '' : 'text-slate-950'}`}
+                      className={`font-black text-lg ${theme === 'dark' ? '' : 'text-slate-950'}`}
                     >
                       {testimonial.name}
                     </h3>
                     <p
-                      className={`text-sm ${mounted && theme === 'dark' ? 'text-purple-400' : 'text-purple-600 font-bold'}`}
+                      className={`text-sm ${theme === 'dark' ? 'text-purple-400' : 'text-purple-600 font-bold'}`}
                     >
                       {testimonial.role}
                     </p>
@@ -271,7 +269,7 @@ export default function Testimonials() {
                       <span
                         key={i}
                         className={
-                          mounted && theme === 'dark'
+                          theme === 'dark'
                             ? 'text-yellow-400'
                             : 'text-yellow-600'
                         }
@@ -293,10 +291,10 @@ export default function Testimonials() {
                 className={`cursor-pointer h-7.5 w-7.5 static translate-y-0 transition-all duration-200 border-none
     ${
       isFirstSlide
-        ? mounted && theme === 'dark'
+        ? theme === 'dark'
           ? 'bg-slate-800! text-slate-500!'
           : 'bg-slate-200! text-slate-400!'
-        : mounted && theme === 'dark'
+        : theme === 'dark'
           ? 'bg-purple-400! text-black!'
           : 'bg-purple-600! text-white!'
     }`}
@@ -306,10 +304,10 @@ export default function Testimonials() {
                 className={`cursor-pointer h-7.5 w-7.5 static translate-y-0 transition-all duration-200 border-none
     ${
       isLastSlide
-        ? mounted && theme === 'dark'
+        ? theme === 'dark'
           ? 'bg-slate-800! text-slate-500!'
           : 'bg-slate-200! text-slate-400!'
-        : mounted && theme === 'dark'
+        : theme === 'dark'
           ? 'bg-purple-400! text-black!'
           : 'bg-purple-600! text-white!'
     }`}

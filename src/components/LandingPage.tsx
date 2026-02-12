@@ -12,10 +12,8 @@ import 'aos/dist/aos.css'
 export default function LandingPage() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const { theme } = useTheme()
-  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    setMounted(true)
     AOS.init({
       duration: 700,
       easing: 'ease-out',
@@ -34,12 +32,12 @@ export default function LandingPage() {
 
   return (
     <div
-      className={`relative transition-colors duration-200 ${mounted && theme === 'dark' ? 'bg-slate-950 text-white' : 'bg-white text-slate-950'}`}
+      className={`relative transition-colors duration-200 ${theme === 'dark' ? 'bg-slate-950 text-white' : 'bg-white text-slate-950'}`}
     >
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div
           className={`absolute w-96 h-96 rounded-full blur-3xl transition-all duration-100 ${
-            mounted && theme === 'dark' ? 'bg-cyan-500/10' : 'bg-cyan-400/10'
+            theme === 'dark' ? 'bg-cyan-500/10' : 'bg-cyan-400/10'
           }`}
           style={{
             left: `${mousePosition.x - 192}px`,
@@ -47,7 +45,7 @@ export default function LandingPage() {
           }}
         />
         <div
-          className={`absolute inset-0 ${mounted && theme === 'dark' ? 'bg-linear-to-b from-slate-900/50 to-slate-950' : 'bg-linear-to-b from-slate-100/30 to-white'}`}
+          className={`absolute inset-0 ${theme === 'dark' ? 'bg-linear-to-b from-slate-900/50 to-slate-950' : 'bg-linear-to-b from-slate-100/30 to-white'}`}
         />
       </div>
 
