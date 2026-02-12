@@ -1,4 +1,5 @@
 import { downloadFileAtURL } from '@/lib/download-cv'
+import { Link } from '@tanstack/react-router'
 import { useTheme } from 'next-themes'
 import { useEffect, useRef, useState } from 'react'
 
@@ -107,13 +108,6 @@ const Ball = ({ className }: { className: string }) => {
 export default function Hero() {
   const { theme } = useTheme()
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
   return (
     <section id="hero" className="relative z-10  px-5 lg:px-15 py-16 lg:py-30">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -165,8 +159,8 @@ export default function Hero() {
               data-aos-delay="1000"
               className="flex gap-4 pt-4"
             >
-              <button
-                onClick={() => scrollToSection('projects')}
+              <Link
+                to="/projects"
                 className={`py-3 px-4 lg:px-8 lg:py-4 font-bold rounded-lg transition-all hover:scale-105 active:scale-95 ${
                   theme === 'dark'
                     ? 'bg-cyan-500 text-black hover:bg-cyan-400'
@@ -174,7 +168,7 @@ export default function Hero() {
                 }`}
               >
                 See My Work →
-              </button>
+              </Link>
               <button
                 onClick={() => {
                   downloadFileAtURL()
