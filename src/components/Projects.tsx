@@ -1,8 +1,13 @@
 import { Link } from '@tanstack/react-router'
 import { useTheme } from 'next-themes'
+import { useEffect, useState } from 'react'
 
 export default function Projects() {
   const { theme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => {
+    setMounted(true)
+  }, [])
   return (
     <section id="projects" className="relative">
       <section className="block md:hidden space-y-5 px-5 py-16">
@@ -10,7 +15,7 @@ export default function Projects() {
           <p
             data-aos="fade-up"
             data-aos-delay="200"
-            className={`font-mono text-sm mb-2 ${theme === 'dark' ? 'text-cyan-400' : 'text-cyan-600'}`}
+            className={`font-mono text-sm mb-2 ${mounted && theme === 'dark' ? 'text-cyan-400' : 'text-cyan-600'}`}
           >
             FEATURED WORK
           </p>
@@ -18,11 +23,11 @@ export default function Projects() {
           <h2
             data-aos="fade-up"
             data-aos-delay="400"
-            className={`text-4xl font-black tracking-tighter leading-[1.1] ${theme === 'dark' ? 'text-white' : 'text-slate-950'}`}
+            className={`text-4xl font-black tracking-tighter leading-[1.1] ${mounted && theme === 'dark' ? 'text-white' : 'text-slate-950'}`}
           >
             Projects that{' '}
             <span
-              className={`block ${theme === 'dark' ? 'text-slate-500' : 'text-purple-500'}`}
+              className={`block ${mounted && theme === 'dark' ? 'text-slate-500' : 'text-purple-500'}`}
             >
               moved the needle
             </span>
@@ -73,18 +78,18 @@ export default function Projects() {
             <div className="w-[40vw] shrink-0 ">
               <p
                 data-aos="fade-up"
-                className={`font-mono text-sm lg:text-base mb-4 ${theme === 'dark' ? 'text-cyan-400' : 'text-cyan-600'}`}
+                className={`font-mono text-sm lg:text-base mb-4 ${mounted && theme === 'dark' ? 'text-cyan-400' : 'text-cyan-600'}`}
               >
                 FEATURED WORK
               </p>
               <h2
                 data-aos="fade-up"
                 data-aos-delay="400"
-                className={`text-5xl  font-black tracking-tighter ${theme === 'dark' ? '' : 'text-slate-950'}`}
+                className={`text-5xl  font-black tracking-tighter ${mounted && theme === 'dark' ? '' : 'text-slate-950'}`}
               >
                 Projects that
                 <span
-                  className={`block ${theme === 'dark' ? 'text-slate-500' : 'text-purple-500'}`}
+                  className={`block ${mounted && theme === 'dark' ? 'text-slate-500' : 'text-purple-500'}`}
                 >
                   moved the needle
                 </span>

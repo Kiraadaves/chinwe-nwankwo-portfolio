@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from '@tanstack/react-router'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   Download,
   FileBraces,
@@ -21,7 +21,10 @@ export default function Header() {
   const { theme, setTheme } = useTheme()
   const location = useLocation()
   const isProjectPage = location.pathname === '/projects'
-
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => {
+    setMounted(true)
+  }, [])
   const navigate = useNavigate()
 
   const handleSectionClick = async (sectionId: string) => {
@@ -38,7 +41,7 @@ export default function Header() {
   return (
     <>
       <header
-        className={`z-20 border-b sticky top-0 flex justify-between items-center px-5 lg:px-15 py-6 ${theme === 'dark' ? 'border-slate-800 ' : 'border-slate-200 bg-white/80'} backdrop-blur-md`}
+        className={`z-20 border-b sticky top-0 flex justify-between items-center px-5 lg:px-15 py-6 ${mounted && theme === 'dark' ? 'border-slate-800 ' : 'border-slate-200 bg-white/80'} backdrop-blur-md`}
       >
         <button
           onClick={() => setIsOpen(true)}
@@ -56,14 +59,16 @@ export default function Header() {
             />
           </button>
           <button
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            onClick={() =>
+              setTheme(mounted && theme === 'dark' ? 'light' : 'dark')
+            }
             className={`cursor-pointer p-2 rounded-lg border transition ${
-              theme === 'dark'
+              mounted && theme === 'dark'
                 ? 'border-slate-700 hover:border-cyan-400 hover:bg-cyan-400/10'
                 : 'border-slate-300 hover:border-cyan-600 hover:bg-cyan-100'
             }`}
           >
-            {theme === 'dark' ? (
+            {mounted && theme === 'dark' ? (
               <Sun className="w-5 h-5" />
             ) : (
               <Moon className="w-5 h-5" />
@@ -73,13 +78,13 @@ export default function Header() {
       </header>
 
       <aside
-        className={`fixed top-0 left-0 h-full w-80 ${theme === 'dark' ? 'border-slate-800 bg-slate-950/80' : 'border-slate-200 bg-white/80'} backdrop-blur-md text-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out flex flex-col ${
+        className={`fixed top-0 left-0 h-full w-80 ${mounted && theme === 'dark' ? 'border-slate-800 bg-slate-950/80' : 'border-slate-200 bg-white/80'} backdrop-blur-md text-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out flex flex-col ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
         <div className="flex items-center justify-between p-4 border-b border-gray-700">
           <h2
-            className={`text-xl font-bold ${theme === 'dark' ? 'text-white' : 'text-slate-600 '}`}
+            className={`text-xl font-bold ${mounted && theme === 'dark' ? 'text-white' : 'text-slate-600 '}`}
           >
             Chinwe Nwankwo
           </h2>
@@ -90,7 +95,7 @@ export default function Header() {
           >
             <X
               size={24}
-              className={`${theme === 'dark' ? 'text-white' : 'text-black'}`}
+              className={`${mounted && theme === 'dark' ? 'text-white' : 'text-black'}`}
             />
           </button>
         </div>

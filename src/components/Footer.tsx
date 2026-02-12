@@ -14,9 +14,11 @@ const texts = [
 const SlidingText = ({
   day,
   theme,
+  mounted,
 }: {
   day: string
   theme: string | undefined
+  mounted: boolean
 }) => {
   const [index, setIndex] = useState(0)
 
@@ -40,12 +42,12 @@ const SlidingText = ({
         >
           {/* Current Item */}
           <span
-            className={`font-black h-[1.2em] ${theme === 'dark' ? 'text-purple-500' : 'text-cyan-400'}`}
+            className={`font-black h-[1.2em] ${mounted && theme === 'dark' ? 'text-purple-500' : 'text-cyan-400'}`}
           >
             {texts[index]}
           </span>
           <span
-            className={`font-black h-[1.2em] ${theme === 'dark' ? 'text-purple-500' : 'text-cyan-400'}`}
+            className={`font-black h-[1.2em] ${mounted && theme === 'dark' ? 'text-purple-500' : 'text-cyan-400'}`}
           >
             {texts[nextIndex]}
           </span>
@@ -60,7 +62,10 @@ const SlidingText = ({
 export default function Footer() {
   const { theme } = useTheme()
   const dayName = new Date().toLocaleDateString('en-US', { weekday: 'long' })
-
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => {
+    setMounted(true)
+  }, [])
   return (
     <footer>
       <div className={`relative h-50 md:h-30`}>
@@ -68,7 +73,7 @@ export default function Footer() {
           className={` px-5  lg:px-50 bg-transparent absolute left-0 right-0 bottom-0 translate-y-[40%] [@media(min-width:529px)]:translate-y-[12%] [@media(min-width:540px)]:translate-y-[25%] md:translate-y-[25%] lg:translate-y-[5%] z-10 `}
         >
           <div
-            className={`rounded-lg h-full relative overflow-hidden ${theme === 'dark' ? 'bg-cyan-500' : 'bg-purple-400'}  py-10 px-5 `}
+            className={`rounded-lg h-full relative overflow-hidden ${mounted && theme === 'dark' ? 'bg-cyan-500' : 'bg-purple-400'}  py-10 px-5 `}
           >
             <div id="footer-card">
               <div
@@ -83,7 +88,7 @@ export default function Footer() {
                 </p>
 
                 <div className="flex justify-start md:justify-center ">
-                  <SlidingText day={dayName} theme={theme} />
+                  <SlidingText day={dayName} theme={theme} mounted={mounted} />
                 </div>
               </div>
             </div>
@@ -92,11 +97,11 @@ export default function Footer() {
       </div>
 
       <div
-        className={`relative border-t-2 ${theme === 'dark' ? 'border-cyan-400' : 'border-purple-500'}`}
+        className={`relative border-t-2 ${mounted && theme === 'dark' ? 'border-cyan-400' : 'border-purple-500'}`}
       >
         <div className="max-w-7xl mx-auto px-6 text-center mt-40 md:mt-30 lg:mt-20">
           <p
-            className={`mb-10 font-mono text-sm lg:text-base font-bold ${theme === 'dark' ? 'text-slate-400' : 'text-black'}`}
+            className={`mb-10 font-mono text-sm lg:text-base font-bold ${mounted && theme === 'dark' ? 'text-slate-400' : 'text-black'}`}
           >
             Chinwe Nwankwo. © 2026
           </p>
