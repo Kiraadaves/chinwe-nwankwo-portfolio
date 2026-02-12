@@ -15,7 +15,7 @@ export default function LandingPage() {
 
   useEffect(() => {
     AOS.init({
-      duration: 1000,
+      duration: 700,
       easing: 'ease-out',
       once: true,
       offset: 0,
