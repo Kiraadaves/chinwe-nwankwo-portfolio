@@ -2,6 +2,18 @@ import Footer from '@/components/Footer'
 import Projects from '@/components/projects/Projects'
 import { createFileRoute } from '@tanstack/react-router'
 
+function AllProjects() {
+  return (
+    <div className="flex flex-col min-h-screen">
+      <main className="grow">
+        <Projects />
+      </main>
+
+      <Footer />
+    </div>
+  )
+}
+
 export const Route = createFileRoute('/projects')({
   component: AllProjects,
   head: () => ({
@@ -43,15 +55,3 @@ export const Route = createFileRoute('/projects')({
     ],
   }),
 })
-
-function AllProjects() {
-  return (
-    <div className="flex flex-col min-h-screen">
-      <main className="grow">
-        <Projects />
-      </main>
-
-      <Footer />
-    </div>
-  )
-}
