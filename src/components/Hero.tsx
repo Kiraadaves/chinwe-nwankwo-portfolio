@@ -326,6 +326,15 @@ export default function Hero() {
                       </a>
                     </div>
                     <div>
+                      {'gitlab: '}
+                      <a
+                        href="https://gitlab.com/Kiraadaves "
+                        className="text-green-400 cursor-pointer hover:underline"
+                      >
+                        "@Kiraadaves"
+                      </a>
+                    </div>
+                    <div>
                       {'linkedin: '}
                       <a
                         href="https://www.linkedin.com/in/chinwe-chukwuogor-400404118/"
@@ -338,7 +347,7 @@ export default function Hero() {
                       {'twitter: '}
                       <a
                         href="https://x.com/CKiraadaves"
-                        className="text-blue-400 cursor-pointer hover:underline"
+                        className="text-purple-400 cursor-pointer hover:underline"
                       >
                         "@CKiraadaves"
                       </a>
