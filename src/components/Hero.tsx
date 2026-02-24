@@ -290,7 +290,9 @@ export default function Hero() {
                     <div>
                       {'skills: ['}
                       <span className="text-orange-400">"React"</span>,
-                      <span className="text-green-400">"Nuxt"</span>,
+                      <span className="text-green-400">"Next"</span>,
+                      <span className="text-pink-400">"Nuxt"</span>,
+                      <span className="text-white">"Tanstack Start App"</span>,
                       <span className="text-blue-400">"TypeScript"</span>......
                       {']'}
                     </div>

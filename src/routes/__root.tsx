@@ -11,6 +11,7 @@ import Header from '../components/Header'
 
 import appCss from '../styles.css?url'
 import { ThemeProvider } from '@/components/ThemeProvider'
+import AOSProvider from '@/components/Aos'
 
 function NotFound() {
   return (
@@ -76,6 +77,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <ThemeProvider attribute="class" defaultTheme="dark">
+          <AOSProvider />
           <Header />
           {children}
           <TanStackDevtools
