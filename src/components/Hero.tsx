@@ -141,7 +141,7 @@ export default function Hero() {
                   data-aos-delay="600"
                   className={`block bg-linear-to-r ${theme === 'dark' ? 'from-cyan-400 via-blue-400 to-purple-500' : 'from-cyan-600 via-blue-500 to-purple-600'} bg-clip-text text-transparent`}
                 >
-                  impossible web
+                  Impossible Web
                 </span>
               </h1>
             </div>
