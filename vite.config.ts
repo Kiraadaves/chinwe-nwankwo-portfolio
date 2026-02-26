@@ -8,7 +8,6 @@ import { fileURLToPath, URL } from 'url'
 import tailwindcss from '@tailwindcss/vite'
 import contentCollections from '@content-collections/vite'
 
-
 const config = defineConfig({
   resolve: {
     alias: {
