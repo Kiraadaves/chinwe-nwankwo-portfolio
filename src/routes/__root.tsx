@@ -43,6 +43,34 @@ export const Route = createRootRoute({
       {
         title: 'Chinwe Nwankwo | Frontend Developer',
       },
+      { property: 'og:type', content: 'website' },
+      {
+        property: 'og:image',
+        content: 'https://chinwe-nwankwo-portfolio.vercel.app',
+      },
+      { property: 'og:title', content: 'Chinwe Nwankwo | Frontend Developer' },
+      {
+        property: 'og:description',
+        content: 'Building aesthetic and functional web experiences.',
+      },
+      {
+        property: 'og:image',
+        content: 'https://chinwe-nwankwo-portfolio.vercel.app',
+      },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      {
+        name: 'twitter:image',
+        content: 'https://chinwe-nwankwo-portfolio.vercel.app',
+      },
+      { name: 'twitter:title', content: 'Chinwe Nwankwo | Frontend Developer' },
+      {
+        name: 'twitter:description',
+        content: 'Building aesthetic and functional web experiences.',
+      },
+      {
+        name: 'twitter:image',
+        content: 'https://chinwe-nwankwo-portfolio.vercel.app',
+      },
     ],
     links: [
       {
