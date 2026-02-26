@@ -6,7 +6,6 @@ import viteTsConfigPaths from 'vite-tsconfig-paths'
 import { fileURLToPath, URL } from 'url'
 
 import tailwindcss from '@tailwindcss/vite'
-import { nitro } from 'nitro/vite'
 import contentCollections from '@content-collections/vite'
 
 const clientOnlyPackages = [
@@ -59,7 +58,6 @@ const config = defineConfig({
   },
   plugins: [
     devtools(),
-    nitro(),
     contentCollections(),
     // this is the plugin that enables path aliases
     viteTsConfigPaths({
@@ -68,7 +66,7 @@ const config = defineConfig({
     tailwindcss(),
     tanstackStart({
       prerender: {
-        enabled: false,
+        enabled: true,
         crawlLinks: true,
       },
     }),
