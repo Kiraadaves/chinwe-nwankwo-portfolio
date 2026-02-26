@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { useTheme } from 'next-themes'
 import Projects from './Projects'
 import Skills from './Skills'

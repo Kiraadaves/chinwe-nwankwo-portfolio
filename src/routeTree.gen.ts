@@ -11,7 +11,6 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ApiRemyChatRouteImport } from './routes/api.remy-chat'
 
 const ProjectsRoute = ProjectsRouteImport.update({
   id: '/projects',
@@ -23,40 +22,31 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiRemyChatRoute = ApiRemyChatRouteImport.update({
-  id: '/api/remy-chat',
-  path: '/api/remy-chat',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/projects': typeof ProjectsRoute
-  '/api/remy-chat': typeof ApiRemyChatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/projects': typeof ProjectsRoute
-  '/api/remy-chat': typeof ApiRemyChatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/projects': typeof ProjectsRoute
-  '/api/remy-chat': typeof ApiRemyChatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/projects' | '/api/remy-chat'
+  fullPaths: '/' | '/projects'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/projects' | '/api/remy-chat'
-  id: '__root__' | '/' | '/projects' | '/api/remy-chat'
+  to: '/' | '/projects'
+  id: '__root__' | '/' | '/projects'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ProjectsRoute: typeof ProjectsRoute
-  ApiRemyChatRoute: typeof ApiRemyChatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -75,20 +65,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/remy-chat': {
-      id: '/api/remy-chat'
-      path: '/api/remy-chat'
-      fullPath: '/api/remy-chat'
-      preLoaderRoute: typeof ApiRemyChatRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ProjectsRoute: ProjectsRoute,
-  ApiRemyChatRoute: ApiRemyChatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
