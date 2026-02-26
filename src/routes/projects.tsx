@@ -1,3 +1,4 @@
+import AOSProvider from '@/components/Aos'
 import Footer from '@/components/Footer'
 import Projects from '@/components/projects/Projects'
 import { createFileRoute } from '@tanstack/react-router'
@@ -5,6 +6,7 @@ import { createFileRoute } from '@tanstack/react-router'
 function AllProjects() {
   return (
     <div className="flex flex-col min-h-screen">
+      <AOSProvider />
       <main className="grow">
         <Projects />
       </main>
@@ -19,21 +21,11 @@ export const Route = createFileRoute('/projects')({
   head: () => ({
     meta: [
       {
-        title: 'Chinwe Nwankwo | Frontend Developer & UI/UX Enthusiast',
-      },
-      {
-        name: 'description',
-        content:
-          'Frontend Developer specializing in building high-performance, accessible, and visually stunning web experiences using React and TypeScript.',
-      },
-      {
-        name: 'keywords',
-        content:
-          'Chinwe Nwankwo, Frontend Developer, React Developer, Web Portfolio, UI/UX Design, TypeScript, JavaScript Engineer',
+        title: 'Chinwe Nwankwo | Projects',
       },
       {
         property: 'og:title',
-        content: 'Chinwe Nwankwo | Frontend Developer Portfolio',
+        content: 'Chinwe Nwankwo | My Projects Portfolio',
       },
       {
         property: 'og:description',
@@ -42,15 +34,20 @@ export const Route = createFileRoute('/projects')({
       },
       {
         property: 'og:image',
-        content: '/images/cc.png',
+        content: 'https://chinwe-nwankwo-portfolio.vercel.app/images/wil.jpg',
       },
       {
-        property: 'og:type',
-        content: 'website',
+        name: 'twitter:title',
+        content: 'Chinwe Nwankwo | My Projects Portfolio',
       },
       {
-        name: 'twitter:card',
-        content: 'summary_large_image',
+        name: 'twitter:description',
+        content:
+          'Explore my latest projects and technical expertise in modern web development.',
+      },
+      {
+        name: 'twitter:image',
+        content: 'https://chinwe-nwankwo-portfolio.vercel.app/images/wil.jpg',
       },
     ],
   }),

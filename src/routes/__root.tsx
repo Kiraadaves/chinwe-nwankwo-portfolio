@@ -11,7 +11,6 @@ import Header from '../components/Header'
 
 import appCss from '../styles.css?url'
 import { ThemeProvider } from '@/components/ThemeProvider'
-import AOSProvider from '@/components/Aos'
 
 function NotFound() {
   return (
@@ -39,7 +38,13 @@ export const Route = createRootRoute({
       { title: 'Chinwe Nwankwo | Frontend Developer' },
       {
         name: 'description',
-        content: 'Building aesthetic and functional web experiences.',
+        content:
+          'Frontend Developer specializing in building high-performance, accessible, and visually stunning web experiences using React and TypeScript.',
+      },
+      {
+        name: 'keywords',
+        content:
+          'Chinwe Nwankwo, Frontend Developer, React Developer, Web Portfolio, UI/UX Design, TypeScript, JavaScript Engineer',
       },
 
       { property: 'og:type', content: 'website' },
@@ -87,7 +92,6 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <ThemeProvider attribute="class" defaultTheme="dark">
-          <AOSProvider />
           <Header />
           {children}
           <TanStackDevtools

@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from '@tanstack/react-router'
+import { Link, useLocation, useNavigate } from '@tanstack/react-router'
 
 import { useState } from 'react'
 import {
@@ -48,13 +48,13 @@ export default function Header() {
           <Menu size={24} />
         </button>
         <div className="flex items-center gap-2">
-          <button className="cursor-pointer ml-4 text-xl font-semibold">
+          <Link to="/" className="cursor-pointer ml-4 text-xl font-semibold">
             <img
               src="/chinwe.jpg"
               alt="My avatar"
               className="h-12 w-12 rounded-full object-cover"
             />
-          </button>
+          </Link>
           <button
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             className={`cursor-pointer p-2 rounded-lg border transition ${
