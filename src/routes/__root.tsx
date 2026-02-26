@@ -33,21 +33,16 @@ function NotFound() {
 export const Route = createRootRoute({
   head: () => ({
     meta: [
+      { charSet: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+
+      { title: 'Chinwe Nwankwo | Frontend Developer' },
       {
-        charSet: 'utf-8',
+        name: 'description',
+        content: 'Building aesthetic and functional web experiences.',
       },
-      {
-        name: 'viewport',
-        content: 'width=device-width, initial-scale=1',
-      },
-      {
-        title: 'Chinwe Nwankwo | Frontend Developer',
-      },
+
       { property: 'og:type', content: 'website' },
-      {
-        property: 'og:image',
-        content: 'https://chinwe-nwankwo-portfolio.vercel.app',
-      },
       { property: 'og:title', content: 'Chinwe Nwankwo | Frontend Developer' },
       {
         property: 'og:description',
@@ -55,13 +50,14 @@ export const Route = createRootRoute({
       },
       {
         property: 'og:image',
-        content: 'https://chinwe-nwankwo-portfolio.vercel.app',
+        content: 'https://chinwe-nwankwo-portfolio.vercel.app/og-image.jpg',
       },
-      { name: 'twitter:card', content: 'summary_large_image' },
       {
-        name: 'twitter:image',
+        property: 'og:url',
         content: 'https://chinwe-nwankwo-portfolio.vercel.app',
       },
+
+      { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:title', content: 'Chinwe Nwankwo | Frontend Developer' },
       {
         name: 'twitter:description',
@@ -69,30 +65,16 @@ export const Route = createRootRoute({
       },
       {
         name: 'twitter:image',
-        content: 'https://chinwe-nwankwo-portfolio.vercel.app',
+        content: 'https://chinwe-nwankwo-portfolio.vercel.app/og-image.jpg',
       },
     ],
     links: [
-      {
-        rel: 'stylesheet',
-        href: appCss,
-      },
-      {
-        rel: 'icon',
-        type: 'image/png',
-        href: '/favicon.png',
-      },
-      {
-        rel: 'apple-touch-icon',
-        href: '/ms-icon.png',
-      },
-      {
-        rel: 'manifest',
-        href: '/manifest.json',
-      },
+      { rel: 'stylesheet', href: appCss },
+      { rel: 'icon', type: 'image/png', href: '/favicon.png' },
+      { rel: 'apple-touch-icon', href: '/ms-icon.png' },
+      { rel: 'manifest', href: '/manifest.json' },
     ],
   }),
-
   notFoundComponent: () => <NotFound />,
   shellComponent: RootDocument,
 })
