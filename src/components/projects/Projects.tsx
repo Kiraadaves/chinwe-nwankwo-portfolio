@@ -44,6 +44,22 @@ const projects: Project[] = [
     imageUrl: '/images/wil.jpg',
   },
   {
+    title: 'Anora Company Website',
+    description: 'Company website for Anora Dev.',
+    liveUrl: 'https://www.anora.dev/',
+    githubUrl: 'https://github.com/Anora-dev/anora-dev',
+    technologies: [
+      'Tanstack Start App',
+      'TailwindCSS',
+      'TypeScript',
+      'Responsive Design',
+      'Framer Motion',
+      'AOS',
+      'Tanstack Query',
+    ],
+    imageUrl: '/images/anora.png',
+  },
+  {
     title: "Admin Dashboard for What's Hot in Lagos",
     description: 'Website with admin dashboard for Whats hot in lagos website',
     liveUrl: 'https://cms.whatshotinlagos.com/',
